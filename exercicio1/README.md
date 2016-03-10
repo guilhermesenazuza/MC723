@@ -1,5 +1,7 @@
 #Relatório Exercício 1
 
+####Pedro Rodrigues Grijó
+####139715
 
 Exercício feito na seguinte máquina:
 
