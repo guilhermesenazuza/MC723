@@ -15,6 +15,9 @@ Que tipo de atividade ele estÃ¡ medindo? Somente desempenho do processador? De
 ## O que baixar
 
 O código pode ser baixado em: http://www.ggsoft.org/archives/genetic.zip.
+
+
+## Como compilar/instalar
 Na versão original, o programador esqueceu alguns includes no arquivo _streamer.h_, que foi corrigido para que o programa rodasse corretamente. É necessário incluir:
 
 * _cstdio_
@@ -22,11 +25,10 @@ Na versão original, o programador esqueceu alguns includes no arquivo _streamer
 
 O código tem uma dependencia, [a biblioteca SDL](https://wiki.libsdl.org/Installation).
 
-## Como compilar/instalar
-O programa deverÃ¡ ser instalado no computador, compilado localmente. NÃ£o deixar o binÃ¡rio disponÃ­vel. NÃ£o deve ser necessÃ¡rio instalar como administrador do computador (root)
+Feito isso, basta digitar _make_ para compilar o programa.
 
 ## Como executar
-InstruÃ§Ãµes para execuÃ§Ã£o. Se seu programa precisa de entradas, vocÃª deve fornece-las para que todos executem corretamente.
+Rodar ./genetic nome_arquivo.bmp. Por exemplo, ./genetic mona.bmp
 
 ## Como medir o desempenho
 Como que o desempenho Ã© medido atravÃ©s deste programa? Se for atravÃ©s de tempo, vocÃª deve especificar claramente qual tempo deverÃ¡ ser utilizado e indicar o motivo aqui. Quantas vezes a medida deverÃ¡ ser feita? O que fazer com ela (mÃ©dia, etc) ? NÃ£o especificar o tempo serÃ¡ considerado falha grave.
