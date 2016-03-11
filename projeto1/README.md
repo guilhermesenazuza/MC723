@@ -20,7 +20,7 @@ Na versão original, o programador esqueceu alguns includes no arquivo _streamer
 * _cstdio_
 * _cstring_
 
-O código tem uma dependencia, [a biblioteca SLD](https://wiki.libsdl.org/Installation).
+O código tem uma dependencia, [a biblioteca SDL](https://wiki.libsdl.org/Installation).
 
 ## Como compilar/instalar
 O programa deverÃ¡ ser instalado no computador, compilado localmente. NÃ£o deixar o binÃ¡rio disponÃ­vel. NÃ£o deve ser necessÃ¡rio instalar como administrador do computador (root)
