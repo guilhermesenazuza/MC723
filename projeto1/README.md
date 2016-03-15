@@ -1,4 +1,4 @@
-# Programa ? - GENETIC
+# Programa 1 - GENETIC
 
 ## O que faz? Para que serve?
 
@@ -10,11 +10,13 @@ O programa pode ser rodado por um tempo arbitrário, então é um bom algoritmo 
 
 O programa também é bom, pois existe um potencial de paralelização.
 
-Que tipo de atividade ele estÃ¡ medindo? Somente desempenho do processador? Desempenho do disco? Algo mais? Processador single-core, multi-core?
+No final, ele escreve a imagem gerada em disco e utilizamos esse momento para medir o desempenho do disco.
 
 ## O que baixar
 
-O código pode ser baixado em: http://www.ggsoft.org/archives/genetic.zip.
+O código original pode ser baixado em: http://www.ggsoft.org/archives/genetic.zip.
+
+Nós fizemos modificações para o programa parar em 50 mil iterações (para termos um tempo fixo para medir) e para escrever uma imagem em disco no final, fatos que não ocorrem no código original.
 
 
 ## Como compilar/instalar
@@ -31,10 +33,46 @@ Feito isso, basta digitar _make_ para compilar o programa.
 Rodar ./genetic nome_arquivo.bmp. Por exemplo, ./genetic mona.bmp
 
 ## Como medir o desempenho
-Como que o desempenho Ã© medido atravÃ©s deste programa? Se for atravÃ©s de tempo, vocÃª deve especificar claramente qual tempo deverÃ¡ ser utilizado e indicar o motivo aqui. Quantas vezes a medida deverÃ¡ ser feita? O que fazer com ela (mÃ©dia, etc) ? NÃ£o especificar o tempo serÃ¡ considerado falha grave.
+
+Para medir o desempenho, utilizamos o comando _time_ do linux, executando "time ./genetic mona.bmp" e pegando o valor _real_ escrito na tela no final.
+Utilizamos o valor de real porque é o tempo real gasto entre o começo do programa e o seu final, ao contrário de user e sys que medem o tempo de CPU gasto pelo programa, que nesse caso, não nos interessa.
+O tempo é dado em segundos pelo comando.
+
+No final, medimos o tempo de escrever a imagem resultante no disco, utilizando funções da biblioteca **time**. Esse tempo é medido em micro segundos, pegamos o tamanho do arquivo escrito em disco e dividimos ele pelo tempo medido na escrita para ter a performace do disco em MB por segundo.
+
+Para nossos dados, rodamos o programa dez vezes em diferentes computadores com diferentes hardwares e tiramos as médias, desvio padrão e variância desses dados.
 
 ## Como apresentar o desempenho
-Como o desempenho deverÃ¡ ser mostrado. Margem de erro, etc. 
+Nós mostraremos tabelas com os dados coletadas para todas as máquinas e junto estarão os dados como média, desvio padrão e a variância.
 
-## MediÃ§Ãµes base (uma mÃ¡quina)
-Inclua a especificaÃ§Ã£o dos componentes relevantes e os resultados de desempenho.
+## Máquinas
+Especificações máquina um:
+
+* Processador: Intel Core i7-Intel(R) Core(TM) i7-4700HQ CPU @ 2.40GHz
+* Memória: 16GB DDR3
+* Cores: 4
+* SO: Ubuntu 14.04LTS
+* HD: ?
+
+Especificações da máquina dois:
+* Processador: Intel(R) Core(TM) i7-4510U CPU @ 2.00GHz
+* Memória: ?
+* Cores: 2
+* SO: ?
+* HD: ?
+
+## Resultados
+
+Iteração   | Tempo de execução (ms) | Desempenho de disco (MB/s)
+:------: | :------------: | :------------------------------:
+1   |     51.85             |    104.861
+2   |     411             |    104.861
+3   |     276              |    104.861
+4   |     407             |    104.861
+5   |     51.85             |    104.861
+6   |     411             |    104.861
+7   |     276              |    104.861
+8   |     407             |    104.861
+9   |     276              |    104.861
+10   |     407             |    104.861
+
