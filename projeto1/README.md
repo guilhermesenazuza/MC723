@@ -61,22 +61,29 @@ Especificações da máquina dois:
 * SO: Ubuntu 15.10
 * HD: Disco rígido SATA de 500 GB / 5400 RPM
 
+Especificações da máquina três:
+* Processador: Intel(R) Core(TM) i7-2670QM CPU @ 2.20GHz
+* Memória: 8GB DDR3 1600MHz
+* Cores: 4
+* SO: Ubuntu 14.04LTS 32-bit
+* HD: SAMSUNG HN-M101MBB / 5400RPM / Interface Sata III
+
 ## Resultados
-###maquina um
+###Máquina um
 Iteração   | Tempo de execução (ms) | Desempenho de disco (MB/s)
 :------: | :------------: | :------------------------------:
-1   |     51.85             |    104.861
-2   |     411             |    104.861
-3   |     276              |    104.861
-4   |     407             |    104.861
-5   |     51.85             |    104.861
-6   |     411             |    104.861
-7   |     276              |    104.861
-8   |     407             |    104.861
-9   |     276              |    104.861
-10   |     407             |    104.861
+1   |     56.04             |    104.861
+2   |     54.421             |    114.809
+3   |     54.571              |    111.257
+4   |     56.601             |    118.088
+5   |     51.251             |    81.212
+6   |     55.149             |    87.514
+7   |     52.604              |    112.416
+8   |     55.169             |    109.537
+9   |     53.558              |    115.236
+10   |     54.406             |    112.365
 
-###maquina dois
+###Máquina dois
 Iteração   | Tempo de execução (ms) | Desempenho de disco (MB/s)
 :------: | :------------: | :------------------------------:
 1   |   54.547	      |69.109
@@ -89,3 +96,17 @@ Iteração   | Tempo de execução (ms) | Desempenho de disco (MB/s)
 8   |   61.712	      |81
 9   |   63.139	      |99.162
 10    |   58.732	     |76.504
+
+###Máquina três
+Iteração   | Tempo de execução (ms) | Desempenho de disco (MB/s)
+:------: | :------------: | :------------------------------:
+1   |     72.5283             |    62.763
+2   |     70.513             |    61.396
+3   |     71.817              |    56.272
+4   |     69.321             |    57.685
+5   |     67.215             |    57.846
+6   |     68.823             |    57.035
+7   |     73.189              |    62.369
+8   |     65.943             |    50.987
+9   |     66.876              |    50.571
+10   |     62.993             |    49.344
