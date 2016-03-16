@@ -18,61 +18,54 @@ O código original pode ser baixado em: http://www.ggsoft.org/archives/genetic.z
 
 Nós fizemos modificações para o programa parar em 50 mil iterações (para termos um tempo fixo para medir) e para escrever uma imagem em disco no final, fatos que não ocorrem no código original.
 
+Logo, para utilizar o programa que nós editamos e fizemos medidas de desempenho, baixe a versão disponível em:.
+
 
 ## Como compilar/instalar
-Na versão original, o programador esqueceu alguns includes no arquivo _streamer.h_, que foi corrigido para que o programa rodasse corretamente. É necessário incluir:
-
-* _cstdio_
-* _cstring_
 
 O código tem uma dependencia, [a biblioteca SDL](https://wiki.libsdl.org/Installation).
 
-Feito isso, basta digitar _make_ para compilar o programa.
+Após baixar a versão modificada por nós, basta digitar _make_ para compilar o programa.
 
 ## Como executar
-Rodar ./genetic nome_arquivo.bmp. Por exemplo, ./genetic mona.bmp
+Rodar time ./genetic nome_arquivo.bmp. Por exemplo, time ./genetic mona.bmp
 
 ## Como medir o desempenho
 
-Para medir o desempenho, utilizamos o comando _time_ do linux, executando "time ./genetic mona.bmp" e pegando o valor _real_ escrito na tela no final.
-Utilizamos o valor de real porque é o tempo real gasto entre o começo do programa e o seu final, ao contrário de user e sys que medem o tempo de CPU gasto pelo programa, que nesse caso, não nos interessa.
+Para medir o desempenho, utilize o comando _time_ do linux, executando "time ./genetic imagem.bmp" e pegando o valor _real_ escrito na tela no final.
+Utilize o valor de real porque é o tempo real gasto entre o começo do programa e o seu final, ao contrário de user e sys que medem o tempo de CPU gasto pelo programa, que nesse caso, não o interessa.
 O tempo é dado em segundos pelo comando.
 
-No final, medimos o tempo de escrever a imagem resultante no disco, utilizando funções da biblioteca **time**. Esse tempo é medido em micro segundos, pegamos o tamanho do arquivo escrito em disco e dividimos ele pelo tempo medido na escrita para ter a performace do disco em MB por segundo.
+No final, medimos o tempo de escrever a imagem resultante no disco, utilizando funções da biblioteca **time**. Esse tempo é medido em micro segundos, pegamos o tamanho do arquivo escrito em disco e dividimos ele pelo tempo medido na escrita para ter a performace do disco em MB por segundo. Esse dado é impresso na tela no final do programa.
 
-Para nossos dados, rodamos o programa dez vezes em diferentes computadores com diferentes hardwares e tiramos as médias, desvio padrão e variância desses dados.
+Sugerimos rodar um alto número de iterações do programa e tirar medidas de estatística como média, desvio padrão e variância. Para a máquina base, usamos o número de dez iterações.
 
-## Como apresentar o desempenho
-Nós mostraremos tabelas com os dados coletadas para todas as máquinas e junto estarão os dados como média, desvio padrão e a variância.
-
-## Máquinas
-Especificações máquina um:
-
+## Medições base
+Especificações da máquina base:
 * Processador: Intel Core i7-Intel(R) Core(TM) i7-4700HQ CPU @ 2.40GHz
 * Memória: 16GB DDR3
 * Cores: 4
 * SO: Ubuntu 14.04LTS
 * HD: Western Digital WD10S21X-24R1BTO / 7200RPM / Interface Sata III
 
-Especificações da máquina dois:
-* Processador: Intel(R) Core(TM) i7-4510U CPU @ 2.00GHz
-* Memória: ?
-* Cores: 2
-* SO: ?
-* HD: ?
-
-## Resultados
+Resultados de desempenho para a máquina base:
 
 Iteração   | Tempo de execução (ms) | Desempenho de disco (MB/s)
 :------: | :------------: | :------------------------------:
-1   |     51.85             |    104.861
-2   |     411             |    104.861
-3   |     276              |    104.861
-4   |     407             |    104.861
-5   |     51.85             |    104.861
-6   |     411             |    104.861
-7   |     276              |    104.861
-8   |     407             |    104.861
-9   |     276              |    104.861
-10   |     407             |    104.861
+1   |     56.040             |    104.861
+2   |     54.421             |    114.809
+3   |     54.571              |    111.257
+4   |     56.601             |    118.088
+5   |     51.251             |    81.212
+6   |     55.149             |    87.514
+7   |     52.604              |    112.416
+8   |     55.169             |    109.537
+9   |     53.558              |    115.236
+10   |     54.406             |    112.365
 
+Análise estatística sobre esses dados:
+
+Dado | Média   | Desvio Padrão | Variância
+:----: | :------: | :------------: | :------------------------------:
+Tempo de execução (s) | 54.377  |     1.583             |    2.507
+Desempenho de Disco (MB/s) | 106.730  |     12.396            |    153.667
