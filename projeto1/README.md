@@ -56,13 +56,13 @@ Especificações máquina um:
 
 Especificações da máquina dois:
 * Processador: Intel(R) Core(TM) i7-4510U CPU @ 2.00GHz
-* Memória: ?
+* Memória: 8GB DDR3 1600MHz
 * Cores: 2
-* SO: ?
-* HD: ?
+* SO: Ubuntu 15.10
+* HD: Disco rígido SATA de 500 GB / 5400 RPM
 
 ## Resultados
-
+###maquina um
 Iteração   | Tempo de execução (ms) | Desempenho de disco (MB/s)
 :------: | :------------: | :------------------------------:
 1   |     51.85             |    104.861
@@ -76,3 +76,16 @@ Iteração   | Tempo de execução (ms) | Desempenho de disco (MB/s)
 9   |     276              |    104.861
 10   |     407             |    104.861
 
+###maquina dois
+Iteração   | Tempo de execução (ms) | Desempenho de disco (MB/s)
+:------: | :------------: | :------------------------------:
+1   |   54.547	      |69.109
+2   |   67.648	       |63.453
+3   |   65.195	      |97.871
+4   |   61.878	      |78.192
+5   |   63.274	      |91.483
+6   |   55.156	      |106.254
+7   |   64.714	      |53.025
+8   |   61.712	      |81
+9   |   63.139	      |99.162
+10    |   58.732	     |76.504
