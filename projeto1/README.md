@@ -52,7 +52,7 @@ Especificações máquina um:
 * Memória: 16GB DDR3
 * Cores: 4
 * SO: Ubuntu 14.04LTS
-* HD: ?
+* HD: Western Digital WD10S21X-24R1BTO / 7200RPM / Interface Sata III
 
 Especificações da máquina dois:
 * Processador: Intel(R) Core(TM) i7-4510U CPU @ 2.00GHz
