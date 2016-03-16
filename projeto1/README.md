@@ -18,7 +18,7 @@ O código original pode ser baixado em: http://www.ggsoft.org/archives/genetic.z
 
 Nós fizemos modificações para o programa parar em 50 mil iterações (para termos um tempo fixo para medir) e para escrever uma imagem em disco no final, fatos que não ocorrem no código original.
 
-Logo, para utilizar o programa que nós editamos e fizemos medidas de desempenho, baixe a versão disponível em:.
+Logo, para utilizar o programa que nós editamos e fizemos medidas de desempenho, baixe a versão disponível na pasta /projeto1/genetic dentro desse repositório.
 
 
 ## Como compilar/instalar
