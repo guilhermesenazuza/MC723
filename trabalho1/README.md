@@ -110,8 +110,10 @@ Os 4 melhores resultados são os Intel-i7 da lista. A partir destes temos proces
 
 
 ### Benchmark 8: FFTW 
-##### Análise Geral
+O programa Fastest Fourier Transform in the West (FFTW) é uma software library para computar transformada de Fourier. 
 
+##### Análise Geral
+A única anomalia aparente neste benchmark é o tempo de DFT1D to computador Mateus Ruivo, que foi muito maior que o esperado se comparado ao que ocorreu com os outros computadores. A máquina não era das mais antigas(Intel(R) Core(TM) i3-3110M CPU @ 2.40GHz 3072 KB Cache, 4GB RAM DDR3, 5400rpm SATA).
 
 
 
