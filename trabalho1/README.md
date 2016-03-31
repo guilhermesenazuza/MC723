@@ -39,7 +39,7 @@ Máquina | Nome | Especificações Técnicas
 31|Gustavo Basso  |Intel Core i7 @ 2.3GHz; 8 GB 1600 MHz DDR3
 32|Netbook - Felipe Emos  | Intel Atom Processor D4xx/D5xx/N4xx/N5xx DMI Bridge
 
-
+## Programas avaliados pelo meu grupo
 ### Benchmark 1: Genetic
 Programa que recebe uma imagem em formato bmp e a recria com polígonos semi transparentes gerados por um algoritmo genético. Após 50 mil iterações, o programa fornece, para avaliar o desempenho: tempo de execução(s) e desempenho de disco (MB/s).
 
@@ -78,3 +78,19 @@ Nota-se que, como ocorreu para o Benchmark 1, o desktop Pedro Meireles obteve o 
 Como esperado, o Raspberry Pi ocupa a pior posição, seguido de um Netbook com processador Intel Atom, de desempenho fraco se comparado aos processadores Intel i3/i5/i7.
 
 Comentando novamente sobre os algoritmos, como temos Insertion sort com complexidade O(n) para o melhor caso e Selection Sort com complexidade O(n^2) para o melhor caso, o desempenho obtido em relação a estes algoritmos foi o esperado.
+
+## Outros programas
+
+### Benchmark 2: ffmpeg
+
+### Benchmark 3: Convolução
+
+### Benchmark 6: imagemagick
+
+### Benchmark 7: tcc
+
+### Benchmark 8: FFTW 
+
+
+
+
