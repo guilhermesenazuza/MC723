@@ -98,7 +98,12 @@ O pior tempo de execução foi o esperado, devido ao processador antigo(Intel(R)
 Em relação ao desempenho de disco, não é possível fazer comentários aprofundados pois faltam informações sobre os discos dos computadores utilizados. 
 
 ### Benchmark 6: imagemagick
+Imagemagick é uma suite de aplicativos para edição não interativa de imagens, ou seja, com ele é possível editar, converter, combinar etc. imagens de dezenas de tipos(https://pt.wikipedia.org/wiki/ImageMagick). Foram medidos tempo de execução, instruções por ciclo, frequência por ciclos clock por tarefas.
 ##### Análise Geral
+Mais uma vez o netbook possui o pior tempo de execução, como esperado. O número de instruções por ciclo é mais alto nos melhores processadores, com o netbook novamente como pior resultado.
+
+
+
 
 
 ### Benchmark 7: tcc
