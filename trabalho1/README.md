@@ -43,18 +43,27 @@ Máquina | Nome | Especificações Técnicas
 ### Benchmark 1: Genetic
 Programa que recebe uma imagem em formato bmp e a recria com polígonos semi transparentes gerados por um algoritmo genético. Após 50 mil iterações, o programa fornece, para avaliar o desempenho: tempo de execução(s) e desempenho de disco (MB/s).
 
-##### Tempo de execução
+##### Análise - Tempo de execução
 O computador que obteve o menor tempo de execução é o único desktop da lista. Por ser um desktop, seu processador(Intel Core i5-4590) não possui a limitação de potência que costuma ocorrer para os processadores de laptop, portanto possui a maior frequência de clock da lista: 3,30GHz.
 
 Após este, temos uma sequência de 7 laptops com processadores Intel-i7 de diferentes gerações. Os tempos obtidos dentre estes são de pouca diferença, principalmente quando consideramos o desvio padrão. O melhor desempenho deste subgrupo foi de um processador Intel Core i7-4700HQ com 2,4GHz e 16GB de RAM. O pior foi de um Intel Core i7-2670QM com 2,2GHz e 8GB de RAM, sendo que o sistema operacional utilizado neste é de 32 bits, portanto a RAM fica limitada a < 4GB. Nota-se que os computadores Matheus Figueiredo e João Fidélis possuem especificações muito semelhantes, porém desempenhos diferentes. Isso pode ter ocorrido devido a quantidade de processos que era executada em ambas as máquinas durante o benchmark, o que pode ter afetado negativamente a máquina Matheus Figueiredo.
 
 O próximo subgrupo é composto por 3 laptos com processadores de menor desempenho: Intel Core i5-4200U 1,6GHz; Intel Core i3-3110M 2.4GHz; Intel Core 2 Duo T6500 2.10GHz; Os 3 com 4GB de RAM. O desempenho mais fraco é o do Intel Core 2 Duo, que é um processador de geração já ultrapassada se comparado aos i3/i5/i7. 
 
-Por último, temos um Raspberry Pi, com tempo de execução bem inferior aos outros computadores da lista. Isso era esperado, visto que possui um processador com apenas 900MHz de clock e 1GB de RAM.
+Por último, temos um Raspberry Pi, com tempo de execução bem inferior aos outros computadores da lista. Isso era esperado, visto que possui um processador com apenas 900MHz de clock e 1GB de RAM
 
-##### Desempenho de disco
-Este parâmetro variou mais que o tempo de execução, porém sua análise correta é inviável, visto que muitas máquinas não possuem informação sobre seus HDDs/SSDs. Quando há informação, é sobre o número de RPM, a qual não é suficiente para se fazer uma análise concreta sobre os resultados obtidos.
+##### Análise - Desempenho de disco
+Este parâmetro variou mais que o tempo de execução, porém sua análise correta é inviável, visto que muitas máquinas não possuem informação sobre seus HDDs/SSDs. Quando há informação, é sobre o número de RPM, a qual não é suficiente para se fazer uma análise concreta sobre os resultados obtidos
 
+### Benchmark 4: Gnuplot
+Programa de linha de comando para plotar gráficos de funcões matemáticas e outros conjuntos de dados em 2 ou 3 dimensões. Neste benchmark foi analisado o tempo de execução, o tempo de clock e os ciclos de barramento.
 
+##### Análise Geral
+O computador Pedro Grijó e o Pedro Vasconcellos possuem desempenhos muito fora do padrão se comparados aos outros resultados obtidos. No primeiro caso, provavelmente ocorreram problemas na execução do Gnuplot que não permitiram a obtenção de dados válidos. O segundo caso se trata de um Raspberry Pi, como já citado no Benchmark 1, e portanto o baixo desempenho era esperado.
 
+Analisando os resultados, nota-se que os 4 primeiros melhores desempenhos de tempo(excluindo o Pedro Grijó) estão nas mesmas posições em relação ao número de clocks e aos ciclos de barramento. Os outros 6 computadores(excluindo o Raspberry Pi) se alternam em relação ao tempo de execução, número de clocks e ciclos de barramento.
+
+É difícil indicar o motivo para os resultados dos 4 primeiros colocados, visto que o computador que ficou em primeiro(Gabriel Magalhães) possui um processador inferior ao que ficou em quarto(Matheus Figueiredo). Uma possibilidade pode ser um número alto de acesso/escrita ao disco feito pelo Gnuplot, o que daria a vantagem para o Gabriel Magalhães devido ao SSD que está máquina possui. Outro motivo pode ser um número alto de processos concorrentes sendo executados no computador Matheus Figueiredo durante o benchmark.
+
+A simetria entre os gráficos dos 3 parâmetros analisados é esperada, visto que são todos altamente dependentes do processador.
 
