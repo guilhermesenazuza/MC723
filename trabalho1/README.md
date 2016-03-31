@@ -82,14 +82,29 @@ Comentando novamente sobre os algoritmos, como temos Insertion sort com complexi
 ## Outros programas
 
 ### Benchmark 2: ffmpeg
+FFmpeg é um programa de linha de comando que grava, converte e cria stream de áudio e vídeo em diversos formatos. Foram medidos: tempo de execução, page-faults, stalled-cycles-frontend e L1-dcache-load-misses.
+##### Análise Geral
+O pior tempo de execução foi obtido pela máquina LuizSekijima, o que era de se esperar devido ao processador mais antigo (Intel Core 2 Duo CPU T6500 2.10GHz). Seguindo, temos outros 2 processadores relativamente antigos nas máquinas Victor Souza(Intel(R) Core(TM)2 Quad CPU Q8400 2.66GHz) e yk0 - Yugo Kuno(AMD PhenonII, 4 cores 3.2MHz). Seguindo temos uma sequência de processadores Intel i7 com clocks variados, sendo que os de gerações mais recentes obtiveram melhores desempenhos.
+
+Sobre page-faults e cache misses, nota-se que computadores com processadores mais antigos obtiveram melhor desempenho nos dois casos. Isso deve estar relacionado com uma menor quantidade de cores desses processadores(comparados aos mais recentes) e de memória nos sistemas analisados.
+
+
 
 ### Benchmark 3: Convolução
+##### Análise Geral
+
 
 ### Benchmark 6: imagemagick
+##### Análise Geral
+
 
 ### Benchmark 7: tcc
+##### Análise Geral
+
 
 ### Benchmark 8: FFTW 
+##### Análise Geral
+
 
 
 
