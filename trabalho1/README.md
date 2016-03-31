@@ -41,4 +41,20 @@ Máquina | Nome | Especificações Técnicas
 
 
 ### Benchmark 1: Genetic
-Programa que recebe uma imagem em formato bmp e a recria com polígonos semi transparentes gerados por um algoritmo genético. Para avaliar o desempenho, foram medidos: tempo de execução(ms) e desempenho de disco (MB/s).
+Programa que recebe uma imagem em formato bmp e a recria com polígonos semi transparentes gerados por um algoritmo genético. Após 50 mil iterações, o programa fornece, para avaliar o desempenho: tempo de execução(s) e desempenho de disco (MB/s).
+
+##### Tempo de execução
+O computador que obteve o menor tempo de execução é o único desktop da lista. Por ser um desktop, seu processador(Intel Core i5-4590) não possui a limitação de potência que costuma ocorrer para os processadores de laptop, portanto possui a maior frequência de clock da lista: 3,30GHz.
+
+Após este, temos uma sequência de 7 laptops com processadores Intel-i7 de diferentes gerações. Os tempos obtidos dentre estes são de pouca diferença, principalmente quando consideramos o desvio padrão. O melhor desempenho deste subgrupo foi de um processador Intel Core i7-4700HQ com 2,4GHz e 16GB de RAM. O pior foi de um Intel Core i7-2670QM com 2,2GHz e 8GB de RAM, sendo que o sistema operacional utilizado neste é de 32 bits, portanto a RAM fica limitada a < 4GB. Nota-se que os computadores Matheus Figueiredo e João Fidélis possuem especificações muito semelhantes, porém desempenhos diferentes. Isso pode ter ocorrido devido a quantidade de processos que era executada em ambas as máquinas durante o benchmark, o que pode ter afetado negativamente a máquina Matheus Figueiredo.
+
+O próximo subgrupo é composto por 3 laptos com processadores de menor desempenho: Intel Core i5-4200U 1,6GHz; Intel Core i3-3110M 2.4GHz; Intel Core 2 Duo T6500 2.10GHz; Os 3 com 4GB de RAM. O desempenho mais fraco é o do Intel Core 2 Duo, que é um processador de geração já ultrapassada se comparado aos i3/i5/i7. 
+
+Por último, temos um Raspberry Pi, com tempo de execução bem inferior aos outros computadores da lista. Isso era esperado, visto que possui um processador com apenas 900MHz de clock e 1GB de RAM.
+
+##### Desempenho de disco
+Este parâmetro variou mais que o tempo de execução, porém sua análise correta é inviável, visto que muitas máquinas não possuem informação sobre seus HDDs/SSDs. Quando há informação, é sobre o número de RPM, a qual não é suficiente para se fazer uma análise concreta sobre os resultados obtidos.
+
+
+
+
