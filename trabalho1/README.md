@@ -102,12 +102,11 @@ Imagemagick é uma suite de aplicativos para edição não interativa de imagens
 ##### Análise Geral
 Mais uma vez o netbook possui o pior tempo de execução, como esperado. O número de instruções por ciclo é mais alto nos melhores processadores, com o netbook novamente como pior resultado.
 
-
-
-
-
 ### Benchmark 7: tcc
+O Tiny C Compiler (aka TCC) é um compilador para C. Foi medido o tempo de execução
+
 ##### Análise Geral
+Os 4 melhores resultados são os Intel-i7 da lista. A partir destes temos processadores mais antigos, como Intel(R) Core(TM)2 Quad Q8400 2.66GHz. Talvez este tenha sido o experimento com os resultados mais compatíveis com o esperado.
 
 
 ### Benchmark 8: FFTW 
