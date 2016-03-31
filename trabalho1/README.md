@@ -67,3 +67,14 @@ Analisando os resultados, nota-se que os 4 primeiros melhores desempenhos de tem
 
 A simetria entre os gráficos dos 3 parâmetros analisados é esperada, visto que são todos altamente dependentes do processador.
 
+### Benchmark 5: Ordenação
+Programa que roda vários algoritmos de ordenação para a mesma entrada de tamanho **n** e retorna o tempo de execução de cada um deles.
+
+##### Análise Geral
+Primeiramente, nota-se a diferença gerada pelos níveis de complexidade dos algoritmos testados. Enquanto que para o Bubble Sort, Selection Sort e Insertion Sort temos O(n^2) para o caso médio, para o Quicksort temos O(nlgn). 
+
+Nota-se que, como ocorreu para o Benchmark 1, o desktop Pedro Meireles obteve o melhor desempenho. Também pode ser observado que as posições de melhores e piores desempenhos pouco variaram entre os computadores, mesmo com os diferentes algoritmos usados nos testes. 
+
+Como esperado, o Raspberry Pi ocupa a pior posição, seguido de um Netbook com processador Intel Atom, de desempenho fraco se comparado aos processadores Intel i3/i5/i7.
+
+Comentando novamente sobre os algoritmos, como temos Insertion sort com complexidade O(n) para o melhor caso e Selection Sort com complexidade O(n^2) para o melhor caso, o desempenho obtido em relação a estes algoritmos foi o esperado.
