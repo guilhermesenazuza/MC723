@@ -91,8 +91,11 @@ Sobre page-faults e cache misses, nota-se que computadores com processadores mai
 
 
 ### Benchmark 3: Convolução
+Processamento de convoluções em imagens tridimensionais. Foram medidos: melhor tempo e tempo médio em segundos; melhor escrita, escrita média, melhor leitura e leitura média em MB/s.
 ##### Análise Geral
+O pior tempo de execução foi o esperado, devido ao processador antigo(Intel(R) Core(TM)2 Quad Q8400  2.66GHz), porém mesmo assim parece ter sido muito alto. Os melhores tempos pertencem a processadores Intel-i7, mas também há i7 entre os piores tempos, talvez de gerações mais antigas. 
 
+Em relação ao desempenho de disco, não é possível fazer comentários aprofundados pois faltam informações sobre os discos dos computadores utilizados. 
 
 ### Benchmark 6: imagemagick
 ##### Análise Geral
