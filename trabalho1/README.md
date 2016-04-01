@@ -43,6 +43,8 @@ Máquina | Nome | Especificações Técnicas
 ### Benchmark 1: Genetic
 Programa que recebe uma imagem em formato bmp e a recria com polígonos semi transparentes gerados por um algoritmo genético. Após 50 mil iterações, o programa fornece, para avaliar o desempenho: tempo de execução(s) e desempenho de disco (MB/s).
 
+![Genetic Tempo](/trabalho1/trabalho1-graphs/Genetic.png "Genetic")
+
 ##### Análise - Tempo de execução
 O computador que obteve o menor tempo de execução é o único desktop da lista. Por ser um desktop, seu processador(Intel Core i5-4590) não possui a limitação de potência que costuma ocorrer para os processadores de laptop, portanto possui a maior frequência de clock da lista: 3,30GHz.
 
@@ -59,6 +61,14 @@ Este parâmetro variou mais que o tempo de execução, porém sua análise corre
 Programa de linha de comando para plotar gráficos de funcões matemáticas e outros conjuntos de dados em 2 ou 3 dimensões. Neste benchmark foi analisado o tempo de execução, o tempo de clock e os ciclos de barramento.
 
 ##### Análise Geral
+
+![Gnuplot Tempo](/trabalho1/trabalho1-graphs/gnuplot_tempo.png "Gnuplot")
+
+![Gnuplot cpuclock](/trabalho1/trabalho1-graphs/gnuplot_tempo_cpuclock.png "Gnuplot")
+
+![Gnuplot buscycle](/trabalho1/trabalho1-graphs/gnuplot_buscycles.png "Gnuplot")
+
+
 O computador Pedro Grijó e o Pedro Vasconcellos possuem desempenhos muito fora do padrão se comparados aos outros resultados obtidos. No primeiro caso, provavelmente ocorreram problemas na execução do Gnuplot que não permitiram a obtenção de dados válidos. O segundo caso se trata de um Raspberry Pi, como já citado no Benchmark 1, e portanto o baixo desempenho era esperado.
 
 Analisando os resultados, nota-se que os 4 primeiros melhores desempenhos de tempo(excluindo o Pedro Grijó) estão nas mesmas posições em relação ao número de clocks e aos ciclos de barramento. Os outros 6 computadores(excluindo o Raspberry Pi) se alternam em relação ao tempo de execução, número de clocks e ciclos de barramento.
@@ -71,6 +81,15 @@ A simetria entre os gráficos dos 3 parâmetros analisados é esperada, visto qu
 Programa que roda vários algoritmos de ordenação para a mesma entrada de tamanho **n** e retorna o tempo de execução de cada um deles.
 
 ##### Análise Geral
+
+![Ordenação Bubblesort](/trabalho1/trabalho1-graphs/ordenacao_bubble.png "Ordenação")
+
+![Ordenação Quicksort](/trabalho1/trabalho1-graphs/ordenacao_quick.png "Ordenação")
+
+![Ordenação Insertionsort](/trabalho1/trabalho1-graphs/ordenacao_insertion.png "Ordenação")
+
+![Ordenação Selectionsort](/trabalho1/trabalho1-graphs/ordenacao_selection.png "Ordenação")
+
 Primeiramente, nota-se a diferença gerada pelos níveis de complexidade dos algoritmos testados. Enquanto que para o Bubble Sort, Selection Sort e Insertion Sort temos O(n^2) para o caso médio, para o Quicksort temos O(nlgn). 
 
 Nota-se que, como ocorreu para o Benchmark 1, o desktop Pedro Meireles obteve o melhor desempenho. Também pode ser observado que as posições de melhores e piores desempenhos pouco variaram entre os computadores, mesmo com os diferentes algoritmos usados nos testes. 
@@ -84,15 +103,26 @@ Comentando novamente sobre os algoritmos, como temos Insertion sort com complexi
 ### Benchmark 2: ffmpeg
 FFmpeg é um programa de linha de comando que grava, converte e cria stream de áudio e vídeo em diversos formatos. Foram medidos: tempo de execução, page-faults, stalled-cycles-frontend e L1-dcache-load-misses.
 ##### Análise Geral
+
+![FFMPEG tempo](/trabalho1/trabalho1-graphs/ffmpeg_time.png "FFMPEG")
+
+![FFMPEG pagefaults](/trabalho1/trabalho1-graphs/ffmpeg_pagefaults.png "FFMPEG")
+
+![FFMPEG cachemisses](/trabalho1/trabalho1-graphs/ffmpeg_cachemisses.png "FFMPEG")
+
 O pior tempo de execução foi obtido pela máquina LuizSekijima, o que era de se esperar devido ao processador mais antigo (Intel Core 2 Duo CPU T6500 2.10GHz). Seguindo, temos outros 2 processadores relativamente antigos nas máquinas Victor Souza(Intel(R) Core(TM)2 Quad CPU Q8400 2.66GHz) e yk0 - Yugo Kuno(AMD PhenonII, 4 cores 3.2MHz). Seguindo temos uma sequência de processadores Intel i7 com clocks variados, sendo que os de gerações mais recentes obtiveram melhores desempenhos.
 
 Sobre page-faults e cache misses, nota-se que computadores com processadores mais antigos obtiveram melhor desempenho nos dois casos. Isso deve estar relacionado com uma menor quantidade de cores desses processadores(comparados aos mais recentes) e de memória nos sistemas analisados.
 
 
-
 ### Benchmark 3: Convolução
 Processamento de convoluções em imagens tridimensionais. Foram medidos: melhor tempo e tempo médio em segundos; melhor escrita, escrita média, melhor leitura e leitura média em MB/s.
 ##### Análise Geral
+
+![Convolução tempo](/trabalho1/trabalho1-graphs/convolucao_tempo.png "Convolução")
+
+![Convolução disco](/trabalho1/trabalho1-graphs/convolucao__disco.png "Convolução")
+
 O pior tempo de execução foi o esperado, devido ao processador antigo(Intel(R) Core(TM)2 Quad Q8400  2.66GHz), porém mesmo assim parece ter sido muito alto. Os melhores tempos pertencem a processadores Intel-i7, mas também há i7 entre os piores tempos, talvez de gerações mais antigas. 
 
 Em relação ao desempenho de disco, não é possível fazer comentários aprofundados pois faltam informações sobre os discos dos computadores utilizados. 
@@ -100,12 +130,24 @@ Em relação ao desempenho de disco, não é possível fazer comentários aprofu
 ### Benchmark 6: imagemagick
 Imagemagick é uma suite de aplicativos para edição não interativa de imagens, ou seja, com ele é possível editar, converter, combinar etc. imagens de dezenas de tipos(https://pt.wikipedia.org/wiki/ImageMagick). Foram medidos tempo de execução, instruções por ciclo, frequência por ciclos clock por tarefas.
 ##### Análise Geral
+
+![Imagemagick tempo](/trabalho1/trabalho1-graphs/Benchmark6-time.png "Imagemagick")
+
+![Imagemagick inst](/trabalho1/trabalho1-graphs/Benchmark6-inst.png "Imagemagick")
+
+![Imagemagick cycles](/trabalho1/trabalho1-graphs/Benchmark6-cycles.png "Imagemagick")
+
+![Imagemagick cpus](/trabalho1/trabalho1-graphs/Benchmark6-cpus.png "Imagemagick")
+
 Mais uma vez o netbook possui o pior tempo de execução, como esperado. O número de instruções por ciclo é mais alto nos melhores processadores, com o netbook novamente como pior resultado.
 
 ### Benchmark 7: tcc
 O Tiny C Compiler (aka TCC) é um compilador para C. Foi medido o tempo de execução
 
 ##### Análise Geral
+
+![TCC tempo](/trabalho1/trabalho1-graphs/Benchmark7.png "TCC")
+
 Os 4 melhores resultados são os Intel-i7 da lista. A partir destes temos processadores mais antigos, como Intel(R) Core(TM)2 Quad Q8400 2.66GHz. Talvez este tenha sido o experimento com os resultados mais compatíveis com o esperado.
 
 
@@ -113,6 +155,9 @@ Os 4 melhores resultados são os Intel-i7 da lista. A partir destes temos proces
 O programa Fastest Fourier Transform in the West (FFTW) é uma software library para computar transformada de Fourier. 
 
 ##### Análise Geral
+
+![FFTW tempo](/trabalho1/trabalho1-graphs/Benchmark8.png "FFTW")
+
 A única anomalia aparente neste benchmark é o tempo de DFT1D to computador Mateus Ruivo, que foi muito maior que o esperado se comparado ao que ocorreu com os outros computadores. A máquina não era das mais antigas(Intel(R) Core(TM) i3-3110M CPU @ 2.40GHz 3072 KB Cache, 4GB RAM DDR3, 5400rpm SATA).
 
 
