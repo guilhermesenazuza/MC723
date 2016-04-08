@@ -40,13 +40,13 @@ O melhor valor para associatividade foi 64, pois este foi o maior valor testado 
 
 **Fixado** o tamanho da cache 64 KB, tamanho do bloco 64 B, **associatividade em 4** e replacement policy LRU, foram testadas fetch policies da cache L1.
 
-![](/exercicio2/graphs/miss-rate-fetch-policy.png"")
+![](/exercicio2/graphs/miss-rate-fetch-policy.png "")
 
 Os melhores valores para fetch policies foram obtidos com always e **subblock**, com uma pequena vantagem de menores miss rates para subblocks.
 
 **Fixado** o tamanho da cache 64 KB, tamanho do bloco 64 B, associatividade 4 e **subblock fetch policy**, foram testadas replacement policies da cache L1.
 
-![](/exercicio2/graphs/miss-rate-replacement-policy.png"")
+![](/exercicio2/graphs/miss-rate-replacement-policy.png "")
 
 Os melhores miss rates foram obtidos com a replacement policy padrão usada pelo DineroIV, **Least Recently Used (LRU)**
 
@@ -67,18 +67,18 @@ Replacement policy: **Last Recently Used (LRU)**
 Fixada a cache L1 definida na primeira parte do exercício, foi feita uma análisa semelhante para a cache L2. Porém, a cache L2 foi testada unificadamente, ao contrário da L1, em que dados e instruções foram separados na análise.
 
 Seguem os resultados obtidos para a cache L2:
-![](/exercicio2/graphs/miss-rate-cache-l2-size.png"")
+![](/exercicio2/graphs/miss-rate-cache-l2-size.png "")
 Miss rate diminui conforme a cache aumenta, como esperado. Foi escolhido o valor de **256 KB** para a L2, pois está de acordo com certos processadores no mercado( o que não ocorre com o valor de 1024 KB)
 
-![](/exercicio2/graphs/miss-rate-cache-l2-block-size.png"")
+![](/exercicio2/graphs/miss-rate-cache-l2-block-size.png "")
 Miss rate diminui conforme o tamanho do bloco aumenta até 512 bytes, piorando consideravelmente ao chegar em 1024 bytes. Foi escolhido o valor de **256 bytes** para manter a consistência com o tamanho da cache.
 
-![](/exercicio2/graphs/miss-rate-cache-l2-associativity.png"")
+![](/exercicio2/graphs/miss-rate-cache-l2-associativity.png "")
 Como na cache L1, o valor ideal foi de **associatividade 4**.
 
-![](/exercicio2/graphs/miss-rate-cache-l2-fetch-policy.png"")
+![](/exercicio2/graphs/miss-rate-cache-l2-fetch-policy.png "")
 
-![](/exercicio2/graphs/miss-rate-cache-l2-replacement-policy.png"")
+![](/exercicio2/graphs/miss-rate-cache-l2-replacement-policy.png "")
 
 Ambas as policies também obtiveram resultados semelhantes aos testes da cache L1, ou seja, **subblock** como melhor fetch policy e **LRU** como melhor replacement policy.
 
