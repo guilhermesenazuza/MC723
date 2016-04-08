@@ -68,12 +68,15 @@ Fixada a cache L1 definida na primeira parte do exercício, foi feita uma análi
 
 Seguem os resultados obtidos para a cache L2:
 ![](/exercicio2/graphs/miss-rate-cache-l2-size.png "")
+
 Miss rate diminui conforme a cache aumenta, como esperado. Foi escolhido o valor de **256 KB** para a L2, pois está de acordo com certos processadores no mercado( o que não ocorre com o valor de 1024 KB)
 
 ![](/exercicio2/graphs/miss-rate-cache-l2-block-size.png "")
+
 Miss rate diminui conforme o tamanho do bloco aumenta até 512 bytes, piorando consideravelmente ao chegar em 1024 bytes. Foi escolhido o valor de **256 bytes** para manter a consistência com o tamanho da cache.
 
 ![](/exercicio2/graphs/miss-rate-cache-l2-associativity.png "")
+
 Como na cache L1, o valor ideal foi de **associatividade 4**.
 
 ![](/exercicio2/graphs/miss-rate-cache-l2-fetch-policy.png "")
