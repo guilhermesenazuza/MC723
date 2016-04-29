@@ -1,0 +1,73 @@
+     128:	27bdffd0 	addiu	sp,sp,-48
+     12c:	afbf002c 	sw	ra,44(sp)
+     130:	afbe0028 	sw	s8,40(sp)
+     134:	03a0f021 	move	s8,sp
+     138:	afc00010 	sw	zero,16(s8)
+     13c:	2402000d 	li	v0,13
+     140:	afc20014 	sw	v0,20(s8)
+     144:	2402fffb 	li	v0,-5
+     148:	afc20018 	sw	v0,24(s8)
+     14c:	8f828008 	lw	v0,-32760(gp)
+     150:	00000000 	nop
+     154:	afc2001c 	sw	v0,28(s8)
+     158:	8f82800c 	lw	v0,-32756(gp)
+     15c:	00000000 	nop
+     160:	afc20020 	sw	v0,32(s8)
+     164:	8fc30010 	lw	v1,16(s8)
+     168:	8fc20014 	lw	v0,20(s8)
+     16c:	00000000 	nop
+     170:	00621021 	addu	v0,v1,v0
+     174:	3c030001 	lui	v1,0x1
+     178:	246451d0 	addiu	a0,v1,20944
+     17c:	00402821 	move	a1,v0
+     180:	0c000337 	jal	cdc <printf>
+     184:	00000000 	nop
+     188:	8fc30010 	lw	v1,16(s8)
+     18c:	8fc20018 	lw	v0,24(s8)
+     190:	00000000 	nop
+     194:	00621021 	addu	v0,v1,v0
+     198:	3c030001 	lui	v1,0x1
+     19c:	246451d0 	addiu	a0,v1,20944
+     1a0:	00402821 	move	a1,v0
+     1a4:	0c000337 	jal	cdc <printf>
+     1a8:	00000000 	nop
+     1ac:	8fc40010 	lw	a0,16(s8)
+     1b0:	0c00016b 	jal	5ac <__floatsisf>
+     1b4:	00000000 	nop
+     1b8:	00402021 	move	a0,v0
+     1bc:	8fc50020 	lw	a1,32(s8)
+     1c0:	0c000092 	jal	248 <__mulsf3>
+     1c4:	00000000 	nop
+     1c8:	00402021 	move	a0,v0
+     1cc:	0c000197 	jal	65c <__extendsfdf2>
+     1d0:	00000000 	nop
+     1d4:	3c040001 	lui	a0,0x1
+     1d8:	248451d0 	addiu	a0,a0,20944
+     1dc:	00603821 	move	a3,v1
+     1e0:	00403021 	move	a2,v0
+     1e4:	0c000337 	jal	cdc <printf>
+     1e8:	00000000 	nop
+     1ec:	8fc40014 	lw	a0,20(s8)
+     1f0:	0c00016b 	jal	5ac <__floatsisf>
+     1f4:	00000000 	nop
+     1f8:	00402021 	move	a0,v0
+     1fc:	8fc5001c 	lw	a1,28(s8)
+     200:	0c00010d 	jal	434 <__divsf3>
+     204:	00000000 	nop
+     208:	00402021 	move	a0,v0
+     20c:	0c000197 	jal	65c <__extendsfdf2>
+     210:	00000000 	nop
+     214:	3c040001 	lui	a0,0x1
+     218:	248451d0 	addiu	a0,a0,20944
+     21c:	00603821 	move	a3,v1
+     220:	00403021 	move	a2,v0
+     224:	0c000337 	jal	cdc <printf>
+     228:	00000000 	nop
+     22c:	00001021 	move	v0,zero
+     230:	03c0e821 	move	sp,s8
+     234:	8fbf002c 	lw	ra,44(sp)
+     238:	8fbe0028 	lw	s8,40(sp)
+     23c:	27bd0030 	addiu	sp,sp,48
+     240:	03e00008 	jr	ra
+     244:	00000000 	nop
+
