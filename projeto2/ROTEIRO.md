@@ -16,10 +16,12 @@
 
 
 Serão avaliados números de hazards, número de ciclos, tempo de execução, missrates (L1, L2), branch prediction rate e números de ciclos perdidos 
+
 ### Configuração de pipeline  
    - 5 estágios
    - 7 estágios
    - 13 estágios
+
 ### Configuração de escalabilidade
    - escalar 
    - superescalar
