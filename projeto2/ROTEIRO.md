@@ -36,14 +36,28 @@ Serão avaliados números de hazards, número de ciclos, tempo de execução, mi
 Vamos trabalhar com dois tipos de hazards: hazards de dados e hazards de controle. 
 
 O hazard de dados surge quando uma instrução tem uma dependência com uma instrução anterior que ainda não foi finalizada, ou seja, dados necessários à instrução atual não estão disponíveis. Existem três tipos de hazards de dados: 
-- Read After Write (RAW)
-- Write After Read (WAR)
-- Write After Write (WAW)
+- Read After Write (RAW) : i2 tentar ler uma informação antes que i1 tenha escrito ela. Por exemplo : 
+i1. R2 <- R1 + R3
+i2. R4 <- R2 + R3
+
+Esse hazard consegue ser resolvido por forwarding.
+
+- Write After Read (WAR) : i2 tentar escrever numa destinação antes que i1 tenha lido ela. Por exemplo :
+i1. R4 <- R1 + R5
+i2. R5 <- R1 + R2
+
+Nesse caso tem que adicionar uma bolha, o que significa perder um ciclo.
+
+- Write After Write (WAW) : i2 tenta escrever uma operand antes que ela esteja escrita por i1. Por exemplo :
+i1. R2 <- R4 + R7
+i2. R2 <- R1 + R3
+
+
 
 Os hazards de controle correspondem a seguinte situação: quando ocorre uma instrução de branch, até a execução da instrução que decide se o branch deve ser tomado não saberemos qual será a instrução seguinte. Para resolver esse problema temos as seguintes estratégias:
-- sem branch prediction: esperamos até a execução da instrução que decide se temos que fazer o branch ou não.
+- sem branch prediction: esperamos até a execução da instrução que decide se temos que fazer o branch ou não. Essa estrategia faz perder tempo.
 - estática: always taken ou never taken. No caso de erro, há penalidade de tempo.
-- dinâmica: guardando um histórico, poderemos fazer uma previsão dinâmica que dependente do que aconteceu anteriormente.
+- dinâmica: guardando um histórico, poderemos fazer uma previsão dinâmica que dependente do que aconteceu anteriormente. Nesse caso também, só há penalidade de tempo quando a predição não acertar. 
 
 Iremos contabilizar os hazards de controle junto com a execução do branch prediction. 
 
