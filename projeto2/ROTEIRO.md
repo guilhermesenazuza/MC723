@@ -31,6 +31,25 @@ Serão avaliados números de hazards, número de ciclos, tempo de execução, mi
 - sempre tomar o branch 
 - repetir a escolha anterior de branch/não branch
 
+####Hazards
+Vamos trabalhar com dois tipos de hazards : hazards de dados e hazards de controle. 
+
+O hazard de dados surge quando uma instrução tem uma dependencia com uma instrução anterior que ainda não foi finalizada. Existem três tipos de hazards de dados : 
+- Read After Write (RAW)
+- Write After Read (WAR)
+- Write After Write (WAW)
+
+Os hazard de controle correspondem a seguinte situação : quando tem uma instrução de branch, até a execução da instrução que decide se o branch tem que ser feito ou não, não sabemos qual vai ser a intrução seguinte. Tem que achar um jeito de resolver esse problema. Existem varias estrategias :
+- sem branch prediction : esperamos até a execução da instrução que decide se temos que fazer o branch ou não
+- estatica : always taken ou never taken. Tem penalidade se a gente errar, senão não perdemos tempo.
+- dinamica : guardando um historico, a gente consegue fazer uma predição dinámica que depende do que já aconteceu.
+
+A gente vai contabilizar esses hazards de controle junto com a execução do branch prediction. 
+
+No caso dos hazards de dados, não precisamos contabilizar os que podem ser resolvidos por forwarding.
+Para contabilizar os hazards que não podem ser resolvidos assim, podemos usar um pequeno historico para ver se a instrução actual depende de alguma das instruções que ainda estão no pipline.
+
+
 ### Configuração cache
 
 |configurações|cache 1|cache 2|cache 3|cache 4|
