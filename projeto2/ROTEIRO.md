@@ -65,8 +65,8 @@ Para contabilizar os hazards que não podem ser resolvidos por forwarding, podem
 |L1 data associativity|4|4|4|4|
 |L1 data fetch policy|always|always|always|always|
 |L1 data replacement policy|LRU|LRU|LRU|LRU|
-|L2 unified size|512KB|x|128KB|x|
-|L2 unified blocksize|512B|x|64B|x|
+|L2 unified size|1024KB|x|512KB|x|
+|L2 unified blocksize|512B|x|512B|x|
 |L2 unified associativity|4|x|4|x|
 |L2 unified fetch policy|always|x|always|x|
 |L2 unified replacement policy|LRU|x|LRU|x|
