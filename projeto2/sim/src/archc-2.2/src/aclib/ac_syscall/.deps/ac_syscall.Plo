@@ -1,0 +1,3 @@
+ac_syscall.lo: ac_syscall.cpp /usr/include/stdc-predef.h
+
+/usr/include/stdc-predef.h:
