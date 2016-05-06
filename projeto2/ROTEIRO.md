@@ -32,22 +32,22 @@ Serão avaliados números de hazards, número de ciclos, tempo de execução, mi
 - repetir a escolha anterior de branch/não branch
 
 ####Hazards
-Vamos trabalhar com dois tipos de hazards : hazards de dados e hazards de controle. 
+Vamos trabalhar com dois tipos de hazards: hazards de dados e hazards de controle. 
 
-O hazard de dados surge quando uma instrução tem uma dependencia com uma instrução anterior que ainda não foi finalizada. Existem três tipos de hazards de dados : 
+O hazard de dados surge quando uma instrução tem uma dependência com uma instrução anterior que ainda não foi finalizada, ou seja, dados necessários à instrução atual não estão disponíveis. Existem três tipos de hazards de dados: 
 - Read After Write (RAW)
 - Write After Read (WAR)
 - Write After Write (WAW)
 
-Os hazard de controle correspondem a seguinte situação : quando tem uma instrução de branch, até a execução da instrução que decide se o branch tem que ser feito ou não, não sabemos qual vai ser a intrução seguinte. Tem que achar um jeito de resolver esse problema. Existem varias estrategias :
-- sem branch prediction : esperamos até a execução da instrução que decide se temos que fazer o branch ou não
-- estatica : always taken ou never taken. Tem penalidade se a gente errar, senão não perdemos tempo.
-- dinamica : guardando um historico, a gente consegue fazer uma predição dinámica que depende do que já aconteceu.
+Os hazards de controle correspondem a seguinte situação: quando ocorre uma instrução de branch, até a execução da instrução que decide se o branch deve ser tomado não saberemos qual será a instrução seguinte. Para resolver esse problema temos as seguintes estratégias:
+- sem branch prediction: esperamos até a execução da instrução que decide se temos que fazer o branch ou não.
+- estática: always taken ou never taken. No caso de erro, há penalidade de tempo.
+- dinâmica: guardando um histórico, poderemos fazer uma previsão dinâmica que dependente do que aconteceu anteriormente.
 
-A gente vai contabilizar esses hazards de controle junto com a execução do branch prediction. 
+Iremos contabilizar os hazards de controle junto com a execução do branch prediction. 
 
 No caso dos hazards de dados, não precisamos contabilizar os que podem ser resolvidos por forwarding.
-Para contabilizar os hazards que não podem ser resolvidos assim, podemos usar um pequeno historico para ver se a instrução actual depende de alguma das instruções que ainda estão no pipline.
+Para contabilizar os hazards que não podem ser resolvidos por forwarding, podemos usar um pequeno histórico para ver se a instrução atual depende de alguma das instruções que ainda estão no pipline.
 
 
 ### Configuração cache
