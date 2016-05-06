@@ -28,6 +28,7 @@ Serão avaliados números de hazards, número de ciclos, tempo de execução, mi
 
 
 ### Configuração branch
+- nenhuma branch predictor
 - sempre tomar o branch 
 - repetir a escolha anterior de branch/não branch
 
