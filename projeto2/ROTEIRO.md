@@ -19,7 +19,8 @@ Serão avaliados números de hazards, número de ciclos, tempo de execução, mi
 
 ### Configuração de pipeline  
    - 5 estágios
-   - sem pipeline
+   - 7 estágios
+   - 13 estágios
 
 ### Configuração de escalabilidade
    - escalar 
@@ -84,7 +85,7 @@ Avaliar o resultado de cada configuração de cache.
 Começar o impacto dos hazards e do processador escalar e super escalar.
 ### Semana 2
 Implementação dos hazards.
-Implementar os pipelines (5 estágios).
+Implementar os pipelines (5, 7, 13estágios).
 ### Semana 3
 Terminar a implementação dos processadores escalar/superescalar.
 Rodar os testes e escrever o relatório final.
