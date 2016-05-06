@@ -73,11 +73,11 @@ Para contabilizar os hazards que não podem ser resolvidos por forwarding, podem
 
 ### Configurações finais
 |configurações|conf. 1|conf. 2|conf. 3|conf. 4|conf. 5|conf. 6|conf. 7|conf. 8|
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|tamanho de pipeline|5|7|13|5|5|5|5|5|
-|escalar/superescalar|escalar|escalar|escalar|superescalar|superescalar|superescalar|superescalar|superescalar|
-|branch predictor|always|always|always|always|repeat|repeat|repeat|repeat|
-|cache|cache 1|cache 1|cache 1|cache 1|cache 1|cache 2|cache 3|cache 4|
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|tamanho de pipeline|5|7|13|5|5|5|5|5|5|
+|escalar/superescalar|escalar|escalar|escalar|superescalar|superescalar|superescalar|superescalar|superescalar|superescalar|
+|branch predictor|always|always|always|always|no prediction|repeat|repeat|repeat|repeat|
+|cache|cache 1|cache 1|cache 1|cache 1|cache 1|cache 1|cache 2|cache 3|cache 4|
 
 ## Roteiro dos experimentos
 ### Semana 1
