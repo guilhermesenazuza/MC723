@@ -36,20 +36,20 @@ Serão avaliados números de hazards, número de ciclos, tempo de execução, mi
 Vamos trabalhar com dois tipos de hazards: hazards de dados e hazards de controle. 
 
 O hazard de dados surge quando uma instrução tem uma dependência com uma instrução anterior que ainda não foi finalizada, ou seja, dados necessários à instrução atual não estão disponíveis. Existem três tipos de hazards de dados: 
-- Read After Write (RAW) : i2 tenta ler uma informação antes que i1 tenha escrito ela. Por exemplo : 
-i1. R2 <- R1 + R3
-i2. R4 <- R2 + R3
+- Read After Write (RAW) : i2 tenta ler uma informação antes que i1 tenha escrito ela. Por exemplo :  
+i1. R2 <- R1 + R3  
+i2. R4 <- R2 + R3  
 
 Esse hazard consegue ser resolvido por forwarding.
 
-- Write After Read (WAR) : i2 tenta escrever numa destinação antes que i1 tenha lido ela. Por exemplo :
-i1. R4 <- R1 + R5
+- Write After Read (WAR) : i2 tenta escrever numa destinação antes que i1 tenha lido ela. Por exemplo :  
+i1. R4 <- R1 + R5  
 i2. R5 <- R1 + R2
 
 Nesse caso tem que adicionar uma bolha, o que significa perder um ciclo.
 
-- Write After Write (WAW) : i2 tenta escrever uma operand antes que ela esteja escrita por i1. Por exemplo :
-i1. R2 <- R4 + R7
+- Write After Write (WAW) : i2 tenta escrever uma operand antes que ela esteja escrita por i1. Por exemplo :  
+i1. R2 <- R4 + R7  
 i2. R2 <- R1 + R3
 
 
