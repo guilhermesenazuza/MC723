@@ -39,18 +39,27 @@ O hazard de dados surge quando uma instrução tem uma dependência com uma inst
 - Read After Write (RAW) : i2 tenta ler uma informação antes que i1 tenha escrito ela. Por exemplo :  
 i1. R2 <- R1 + R3  
 i2. R4 <- R2 + R3  
+Vamos contabilizar esses hazards usando o Dinero :
+```
+Numero de accesos a memoria : acessos
+Numeros de hits : nHits
+Numeros de miss : nMiss
 
-Esse hazard consegue ser resolvido por forwarding.
+Numero de ciclos = accessos + nHits * penalidadeHits + nMiss * penalidadeMiss
+```
+
 
 - Write After Read (WAR) : i2 tenta escrever numa destinação antes que i1 tenha lido ela. Por exemplo :  
 i1. R4 <- R1 + R5  
 i2. R5 <- R1 + R2
 
-Nesse caso tem que adicionar uma bolha, o que significa perder um ciclo.
+Não precisamos contabilizar esses hazards porque eles são resolvidos pelo fordwarding.
 
 - Write After Write (WAW) : i2 tenta escrever uma operand antes que ela esteja escrita por i1. Por exemplo :  
 i1. R2 <- R4 + R7  
 i2. R2 <- R1 + R3
+
+Esse hazard só tem que ser contabilizado se se usa um processador superescalar.
 
 
 
