@@ -53,26 +53,22 @@ Numero de ciclos = accessos + nHits * penalidadeHits + nMiss * penalidadeMiss
 i1. R4 <- R1 + R5  
 i2. R5 <- R1 + R2
 
-Não precisamos contabilizar esses hazards porque eles são resolvidos pelo fordwarding.
+ Não precisamos contabilizar esses hazards porque eles são resolvidos pelo fordwarding.
 
 - Write After Write (WAW) : i2 tenta escrever uma operand antes que ela esteja escrita por i1. Por exemplo :  
 i1. R2 <- R4 + R7  
 i2. R2 <- R1 + R3
 
-Esse hazard só tem que ser contabilizado se se usa um processador superescalar.
+ Esse hazard só tem que ser contabilizado se se usa um processador superescalar.
 
 
 
 Os hazards de controle correspondem a seguinte situação: quando ocorre uma instrução de branch, até a execução da instrução que decide se o branch deve ser tomado não saberemos qual será a instrução seguinte. Para resolver esse problema temos as seguintes estratégias:
 - sem branch prediction: esperamos até a execução da instrução que decide se temos que fazer o branch ou não. Essa estrategia faz perder tempo.
-- estática: always taken ou never taken. No caso de erro, há penalidade de tempo.
+- estática: always taken ou never taken. No caso de erro, há penalidade de tempo. Testaremos o caso always taken.
 - dinâmica: guardando um histórico, poderemos fazer uma previsão dinâmica que dependente do que aconteceu anteriormente. Nesse caso também, só há penalidade de tempo quando a predição não acertar. 
 
 Iremos contabilizar os hazards de controle junto com a execução do branch prediction. 
-
-No caso dos hazards de dados, não precisamos contabilizar os que podem ser resolvidos por forwarding.
-Para contabilizar os hazards que não podem ser resolvidos por forwarding, podemos usar um pequeno histórico para ver se a instrução atual depende de alguma das instruções que ainda estão no pipline.
-
 
 ### Configuração cache
 
