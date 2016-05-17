@@ -15,8 +15,15 @@ Este projeto tem como objetivo a avaliação do impacto e desempenho de um proce
 A avaliação de impacto e desempenho foi realizada no simulador MIPS baseado em [ArchC](http://www.archc.org/). 
 As configurações utilizadas e os critérios avaliados podem ser encontrados no [roteiro](https://github.com/pedrogrijo/MC723/blob/master/projeto2/ROTEIRO.md)
  deste projeto.
+ 
+#### Observações Sobre Pipelines
 
-## Análise
+##### 5 Estágios
+##### 7 Estágios
+##### 13 Estágios
+
+
+## Resultados e Análise
 <br/>
 
 ## Conclusão
