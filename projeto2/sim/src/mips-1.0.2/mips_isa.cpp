@@ -42,7 +42,7 @@ static int processors_started = 0;
 #define DEFAULT_STACK_SIZE (256*1024)
 
 // y4k start
-FILE *f_trace = fopen("/tmp/y4k_bitcount_small_.mips_trace", "w");
+FILE *f_trace = fopen("/tmp/y4k_dijkstra_small_.mips_trace", "w");
 // FILE *f_trace = fopen("/tmp/y4k_susan_small_smooth_.mips_trace", "w");
 // y4k end
 

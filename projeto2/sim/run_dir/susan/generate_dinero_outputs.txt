@@ -1,0 +1,7 @@
+/home/staff/lucas/mc723/dinero4sbc/dineroIV -informat d -l1-isize 128k -l1-ibsize 128 -l1-iassoc 4 -l1-irepl l -l1-ifetch a -l1-dsize 128k -l1-dbsize 128 -l1-dassoc 4 -l1-drepl l -l1-dfetch a -l2-usize 1024k -l2-ubsize 512 -l2-uassoc 4 -l2-urepl l -l2-ufetch a < /tmp/y4k_susan_small_smooth_.mips_trace > susan_small_smooth.dinero_cache1_output
+
+/home/staff/lucas/mc723/dinero4sbc/dineroIV -informat d -l1-isize 128k -l1-ibsize 128 -l1-iassoc 4 -l1-irepl l -l1-ifetch a -l1-dsize 128k -l1-dbsize 128 -l1-dassoc 4 -l1-drepl l -l1-dfetch a < /tmp/y4k_susan_small_smooth_.mips_trace > susan_small_smooth.dinero_cache2_output
+
+/home/staff/lucas/mc723/dinero4sbc/dineroIV -informat d -l1-isize 32k -l1-ibsize 16 -l1-iassoc 4 -l1-irepl l -l1-ifetch a -l1-dsize 32k -l1-dbsize 16 -l1-dassoc 4 -l1-drepl l -l1-dfetch a -l2-usize 512k -l2-ubsize 512 -l2-uassoc 4 -l2-urepl l -l2-ufetch a < /tmp/y4k_susan_small_smooth_.mips_trace > susan_small_smooth.dinero_cache3_output
+
+/home/staff/lucas/mc723/dinero4sbc/dineroIV -informat d -l1-isize 32k -l1-ibsize 16 -l1-iassoc 4 -l1-irepl l -l1-ifetch a -l1-dsize 32k -l1-dbsize 16 -l1-dassoc 4 -l1-drepl l -l1-dfetch a < /tmp/y4k_susan_small_smooth_.mips_trace > susan_small_smooth.dinero_cache4_output

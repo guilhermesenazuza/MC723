@@ -1,0 +1,15 @@
+-bash-4.3$ ../../src/mips-1.0.2/mips.x --load=dijkstra_small.mips input.dat > output_small.dat
+
+        SystemC 2.3.1-Accellera --- May  6 2016 08:53:17
+        Copyright (c) 1996-2014 by all Contributors,
+        ALL RIGHTS RESERVED
+ArchC: Reading ELF application file: dijkstra_small.mips
+ArchC: -------------------- Starting Simulation --------------------
+
+ArchC: -------------------- Simulation Finished --------------------
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+ArchC: Simulation statistics
+    Times: 5.74 user, 0.14 system, 5.88 real
+    Number of instructions executed: 49165900
+    Simulation speed: 8565.49 K instr/s

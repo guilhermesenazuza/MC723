@@ -1,0 +1,15 @@
+-bash-4.3$ ../../src/mips-1.0.2/mips.x --load=qsort_small.mips input_small.dat > output_small_mips.txt
+
+        SystemC 2.3.1-Accellera --- May  6 2016 08:53:17
+        Copyright (c) 1996-2014 by all Contributors,
+        ALL RIGHTS RESERVED
+ArchC: Reading ELF application file: qsort_small.mips
+ArchC: -------------------- Starting Simulation --------------------
+
+ArchC: -------------------- Simulation Finished --------------------
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+ArchC: Simulation statistics
+    Times: 5.01 user, 0.17 system, 5.16 real
+    Number of instructions executed: 39464251
+    Simulation speed: 7877.10 K instr/s
