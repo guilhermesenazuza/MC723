@@ -1,0 +1,16 @@
+../../src/mips-1.0.2/mips.x --load=bitcnts.mips 75000 > output_small_mips.txt
+
+        SystemC 2.3.1-Accellera --- May  6 2016 08:53:17
+        Copyright (c) 1996-2014 by all Contributors,
+        ALL RIGHTS RESERVED
+ArchC: Reading ELF application file: bitcnts.mips
+ArchC: -------------------- Starting Simulation --------------------
+
+ArchC: -------------------- Simulation Finished --------------------
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+ArchC: Simulation statistics
+    Times: 3.42 user, 0.04 system, 3.47 real
+    Number of instructions executed: 35787803
+    Simulation speed: 10464.27 K instr/s
+
