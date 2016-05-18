@@ -42,7 +42,8 @@ static int processors_started = 0;
 #define DEFAULT_STACK_SIZE (256*1024)
 
 // y4k start
-FILE *f_trace = fopen("mips.trace", "w");
+FILE *f_trace = fopen("/home/staff/lucas/tmp-lab/y4k_susan_small_smooth_.mips_trace", "w");
+// FILE *f_trace = fopen("/tmp/y4k_susan_small_smooth_.mips_trace", "w");
 // y4k end
 
 //!Generic instruction behavior method.
@@ -56,7 +57,7 @@ void ac_behavior( instruction )
 #endif 
 
   // y4k start
-  fprintf(f_trace, "2 %d\n", (int) ac_pc);
+  fprintf(f_trace, "2 %x\n", (int) ac_pc);
   // y4k end
 };
  
@@ -100,7 +101,7 @@ void ac_behavior( lb )
   dbg_printf("Result = %#x\n", RB[rt]);
 
   // y4k start
-  fprintf(f_trace, "0 %d\n", RB[rs]+ imm);
+  fprintf(f_trace, "0 %x\n", RB[rs]+ imm);
   // y4k end
 };
 
@@ -114,7 +115,7 @@ void ac_behavior( lbu )
   dbg_printf("Result = %#x\n", RB[rt]);
 
   // y4k start
-  fprintf(f_trace, "0 %d\n", RB[rs]+ imm);
+  fprintf(f_trace, "0 %x\n", RB[rs]+ imm);
   // y4k end
 };
 
@@ -128,7 +129,7 @@ void ac_behavior( lh )
   dbg_printf("Result = %#x\n", RB[rt]);
 
   // y4k start
-  fprintf(f_trace, "0 %d\n", RB[rs]+ imm);
+  fprintf(f_trace, "0 %x\n", RB[rs]+ imm);
   // y4k end
 };
 
@@ -141,7 +142,7 @@ void ac_behavior( lhu )
   dbg_printf("Result = %#x\n", RB[rt]);
 
   // y4k start
-  fprintf(f_trace, "0 %d\n", RB[rs]+ imm);
+  fprintf(f_trace, "0 %x\n", RB[rs]+ imm);
   // y4k end
 };
 
@@ -153,7 +154,7 @@ void ac_behavior( lw )
   dbg_printf("Result = %#x\n", RB[rt]);
 
   // y4k start
-  fprintf(f_trace, "0 %d\n", RB[rs]+ imm);
+  fprintf(f_trace, "0 %x\n", RB[rs]+ imm);
   // y4k end
 };
 
@@ -173,7 +174,7 @@ void ac_behavior( lwl )
   dbg_printf("Result = %#x\n", RB[rt]);
 
   // y4k start
-  fprintf(f_trace, "0 %d\n", RB[rs]+ imm);
+  fprintf(f_trace, "0 %x\n", RB[rs]+ imm);
   // y4k end
 };
 
@@ -193,7 +194,7 @@ void ac_behavior( lwr )
   dbg_printf("Result = %#x\n", RB[rt]);
 
   // y4k start
-  fprintf(f_trace, "0 %d\n", RB[rs]+ imm);
+  fprintf(f_trace, "0 %x\n", RB[rs]+ imm);
   // y4k end
 };
 
@@ -207,7 +208,7 @@ void ac_behavior( sb )
   dbg_printf("Result = %#x\n", (int) byte);
 
   // y4k start
-  fprintf(f_trace, "1 %d\n", RB[rs]+ imm);
+  fprintf(f_trace, "1 %x\n", RB[rs]+ imm);
   // y4k end
 };
 
@@ -221,7 +222,7 @@ void ac_behavior( sh )
   dbg_printf("Result = %#x\n", (int) half);
 
   // y4k start
-  fprintf(f_trace, "1 %d\n", RB[rs]+ imm);
+  fprintf(f_trace, "1 %x\n", RB[rs]+ imm);
   // y4k end
 };
 
@@ -233,7 +234,7 @@ void ac_behavior( sw )
   dbg_printf("Result = %#x\n", RB[rt]);
 
   // y4k start
-  fprintf(f_trace, "1 %d\n", RB[rs]+ imm);
+  fprintf(f_trace, "1 %x\n", RB[rs]+ imm);
   // y4k end
 };
 
@@ -253,7 +254,7 @@ void ac_behavior( swl )
   dbg_printf("Result = %#x\n", data);
 
   // y4k start
-  fprintf(f_trace, "1 %d\n", RB[rs]+ imm);
+  fprintf(f_trace, "1 %x\n", RB[rs]+ imm);
   // y4k end
 };
 
@@ -273,7 +274,7 @@ void ac_behavior( swr )
   dbg_printf("Result = %#x\n", data);
 
   // y4k start
-  fprintf(f_trace, "1 %d\n", RB[rs]+ imm);
+  fprintf(f_trace, "1 %x\n", RB[rs]+ imm);
   // y4k end
 };
 
