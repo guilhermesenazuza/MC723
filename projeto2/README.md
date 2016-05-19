@@ -9,7 +9,7 @@
 
 ## Introdução
 O desempenho de um processador não se resume à sua frequência de clock ou ao seu número de núcleos. Muito além da "potência" em números da CPU, uma parte fundamental do seu desempenho depende de uma arquitetura bem planejada e que seja apropriada para as sequências de instruções mais comuns nos programas que demandam alta performance.  
-Com isso em mente, foram realizados experimentos em simulação do processamento de quatro benchmarks com diferentes configurações de arquitetura de CPU. Para avaliação foi considerado o impacto no número de ciclos dos programas a partir da mudança de parâmetros da CPU como o tamanho de pipeline, o paralelismo de instruções, o tipo de _branch predictor_ e as configurações de _cache_.
+Com isso em mente, foram realizados experimentos em simulação do processamento de quatro benchmarks com diferentes configurações de arquitetura de CPU. Para avaliação foi considerado o impacto no número de ciclos dos programas a partir da mudança de parâmetros da CPU como o tamanho de _pipeline_, o paralelismo de instruções, o tipo de _branch predictor_ e as configurações de _cache_.
 
 
 ## Metodologia
@@ -25,7 +25,7 @@ Os arquivos foram obtidos dos servidores do IC sob o diretório
 
 Seguem abaixo as opções escolhidas para cada configuração do experimento:
 
-#### Pipeline:
+#### _Pipeline_:
 - 5 estágios
 - 7 estágios
 - 13 estágios
@@ -36,8 +36,9 @@ Seguem abaixo as opções escolhidas para cada configuração do experimento:
 
 #### `Branch prediction`
 - nenhum
-- `always taken`
-- `repeat taken/not-taken`
+- _always taken_
+- _never taken_
+- _repeat taken/not-taken_
 
 #### Configuração cache
 
@@ -60,16 +61,16 @@ Seguem abaixo as opções escolhidas para cada configuração do experimento:
 |L2 unified replacement policy|LRU|x|LRU|x|
 
 
-#### Observações Sobre Pipelines
+#### Observações Sobre _Pipeline_s
 
 ##### 5 Estágios
 Baseado na arquitetura MIPS. Os 5 estágios são: IF (instruction fetch), ID (instruction decode and register file read), EX (execute or address calculation), MEM (memory access) e WB (write-back).[1, p. 300] 
 ##### 7 Estágios
 ##### 13 Estágios
 #### Arquitetura Superescalar 
-Essa técnica permite o processamento de mais de uma instrução por estágio do pipeline, o que por sua vez torna possível a obtenção de CPI (ciclos por instrução) menor que 1. As instruções são selecionadas durante a execução. 
+Essa técnica permite o processamento de mais de uma instrução por estágio do _pipeline_, o que por sua vez torna possível a obtenção de CPI (ciclos por instrução) menor que 1. As instruções são selecionadas durante a execução. 
 
-Trabalharemos com um pacote(*issue packet*) de duas instruções baseado no pipeline de 5 estágios da arquitetura MIPS. Os pacotes representam o conjunto de instruções que serão enviadas em conjunto em um ciclo de clock. Apesar de atualmente existirem processadores que podem enviar pacotes de 4 a 6 instruções, o valor de duas instruções foi escolhido devido a existência de poucas aplicações que podem sustentar um número maior de instruções por ciclo de clock. Isso ocorre devido a dependências que não podem ser resolvidas em paralelo e a perdas na hierarquia de memória que limitam a capacidade do pipeline de se manter cheio.[1, p. 343] 
+Trabalharemos com um pacote(*issue packet*) de duas instruções baseado no _pipeline_ de 5 estágios da arquitetura MIPS. Os pacotes representam o conjunto de instruções que serão enviadas em conjunto em um ciclo de clock. Apesar de atualmente existirem processadores que podem enviar pacotes de 4 a 6 instruções, o valor de duas instruções foi escolhido devido a existência de poucas aplicações que podem sustentar um número maior de instruções por ciclo de clock. Isso ocorre devido a dependências que não podem ser resolvidas em paralelo e a perdas na hierarquia de memória que limitam a capacidade do _pipeline_ de se manter cheio.[1, p. 343] 
 
 Para representar o processador superescalar, foi utilizado um vetor para guardar o pacote de instruções. Conforme uma instrução é recebida, ela é adicionada ao pacote apenas se a instrução que já estiver nele não conflitar(Write After Write) com a instrução que chegou. No caso de conflitos, o pacote é enviado com apenas uma instrução(neste caso há aumento de CPI) e a instrução que acabou de chegar só irá no próximo pacote. Caso não haja conflitos, a instrução é adicionada ao pacote, que é enviado normalmente. Essa abordagem faz com que as instruções recebidas sejam enviadas em ordem, ou seja, não há reordenação de instruções. Porém, apesar da escolha limitada, o envio é dinâmico
 
