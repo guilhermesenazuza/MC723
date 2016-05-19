@@ -1,28 +1,63 @@
 # Projeto 2: Desempenho do Processador
 
 #### Equipe
-- Gabriel Bueno de Oliveira 139455
-- Pedro Rodrigues Grijó 139715
-- Titouan Thibaud 180879
-- Yugo Kuno 033324 
+- 139455 - Gabriel Bueno de Oliveira
+- 139715 - Pedro Rodrigues Grijó
+- 180879 - Titouan Thibaud
+- 033324 - Yugo Kuno
 
 
 ## Introdução
 O desempenho de um processador não se resume à sua frequência de clock ou ao seu número de núcleos. Muito além da "potência" em números da CPU, uma parte fundamental do seu desempenho depende de uma arquitetura bem planejada e que seja apropriada para as sequências de instruções mais comuns nos programas que demandam alta performance.  
-Com isso em mente, foram realizados experimentos em simulação do processamento de quatro benchmarks com diferentes configurações de arquitetura de CPU. Para avaliação foi considerado o impacto no número de ciclos dos programas a partir da mudança de parâmetros da CPU como o tamanho de pipeline, o processador ser escalar ou superescalar, o tipo de _branch predictor_ e as configurações de _cache_.
+Com isso em mente, foram realizados experimentos em simulação do processamento de quatro benchmarks com diferentes configurações de arquitetura de CPU. Para avaliação foi considerado o impacto no número de ciclos dos programas a partir da mudança de parâmetros da CPU como o tamanho de pipeline, o paralelismo de instruções, o tipo de _branch predictor_ e as configurações de _cache_.
 
 
 ## Metodologia
 Neste experimento foi usado um simulador do processador MIPS, criado com a linguagem ArchC, criado pelo time do IC/Unicamp de mesmo nome e baseado na linguagem de descrição de hardware SystemC. O ArchC permite, entre outras funcionalidades, a avalição do número de execuções de cada tipo de instrução pelo programa e o que ocorre com o _dataflow_ a cada instrução.
 
-Seguem abaixo as opções escolhidas para cada configuração do experimento:
-
-### Benchmarks:
+Serão avaliados os seguintes benchmarks:
 - dijkstra
 - bitcount
 - qsort
 - susan
-Estes benchmarks foram obtidos dos servidores do IC sob o diretório `/home/staff/lucas/mc723/ex3/MipsMibench/`.
+Os arquivos foram obtidos dos servidores do IC sob o diretório
+`/home/staff/lucas/mc723/ex3/MipsMibench/`
+
+Seguem abaixo as opções escolhidas para cada configuração do experimento:
+
+#### Pipeline:
+- 5 estágios
+- 7 estágios
+- 13 estágios
+
+#### Paralelismo de instruções
+- escalar
+- superescalar
+
+#### `Branch prediction`
+- nenhum
+- `always taken`
+- `repeat taken/not-taken`
+
+#### Configuração cache
+
+|configurações|cache 1|cache 2|cache 3|cache 4|
+|---|:---:|:---:|:---:|:---:|
+|L1 instruction size|128KB|128KB|32KB|32KB|
+|L1 instruction blocksize|128B|128B|16B|16B|
+|L1 instruction associativity|4|4|4|4|
+|L1 instruction fetch policy|always|always|always|always|
+|L1 instruction replacement policy|LRU|LRU|LRU|LRU|
+|L1 data size|128KB|128KB|32KB|32KB|
+|L1 data blocksize|128B|128B|16B|16B|
+|L1 data associativity|4|4|4|4|
+|L1 data fetch policy|always|always|always|always|
+|L1 data replacement policy|LRU|LRU|LRU|LRU|
+|L2 unified size|1024KB|x|512KB|x|
+|L2 unified blocksize|512B|x|512B|x|
+|L2 unified associativity|4|x|4|x|
+|L2 unified fetch policy|always|x|always|x|
+|L2 unified replacement policy|LRU|x|LRU|x|
 
 
 #### Observações Sobre Pipelines
