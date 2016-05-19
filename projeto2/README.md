@@ -39,9 +39,9 @@ Tempo por estágio de ~0.19ns, correspondente a um _clock_ de ~5.2GHz.
 
 #### Paralelismo de instruções
 - escalar  
-A cada ciclo uma instrução está sendo processada em cada elemento do _pipeline_ caso não ocorram _data hazards_.  
+A cada ciclo uma instrução está sendo processada em cada elemento do _pipeline_ caso não ocorram _hazards_; como _forwarding_ resolve todos os _data hazards_, serão perdidos ciclos apenas nos casos de _control hazard_, que serão avaliados na seção de _Branch prediction_ abaixo.  
 - superescalar  
-A cada ciclo duas instruções estão sendo processadas em cada elemento do _pipeline_ caso não ocorram _data hazards_.  
+A cada ciclo duas instruções estão sendo processadas em cada elemento do _pipeline_ caso não ocorram _data hazards_; como as instruções estão ocorrendo em paralelo, o _forwarding_ não consegue resolver os _data hazards_, tal que perde-se a segunda instrução do par sempre que isto ocorrer. Da mesma forma _control hazards_ serão avaliados na seção de _Branch prediction_ abaixo.  
 
 #### _Branch prediction_
 Pode-se calcular o número de ciclos perdidos por todas instruções de _branch_ avaliando cada instrução do tipo executada conforme o padrão abaixo:  
