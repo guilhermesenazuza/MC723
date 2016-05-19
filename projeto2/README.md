@@ -26,9 +26,15 @@ Os arquivos foram obtidos dos servidores do IC sob o diretório
 Seguem abaixo as opções escolhidas para cada configuração do experimento:
 
 #### _Pipeline_:
+Será considerado um tempo de execução completa do _pipeline_ de 2.5ns, tal que para:
+- 1 estágio
+Tempo por estágio de 2.5ns, correspondente a um _clock_ de 400MHz.
 - 5 estágios
+Tempo por estágio de 0.5ns, correspondente a um _clock_ de 2.0GHz.
 - 7 estágios
+Tempo por estágio de 0.36ns, correspondente a um _clock_ de ~2.8GHz.
 - 13 estágios
+Tempo por estágio de 0.19ns, correspondente a um _clock_ de ~5.2GHz.
 
 #### Paralelismo de instruções
 - escalar
@@ -40,7 +46,7 @@ Seguem abaixo as opções escolhidas para cada configuração do experimento:
 - _never taken_
 - _repeat taken/not-taken_
 
-#### Configuração cache
+#### Cache
 
 |configurações|cache 1|cache 2|cache 3|cache 4|
 |---|:---:|:---:|:---:|:---:|
@@ -59,6 +65,7 @@ Seguem abaixo as opções escolhidas para cada configuração do experimento:
 |L2 unified associativity|4|x|4|x|
 |L2 unified fetch policy|always|x|always|x|
 |L2 unified replacement policy|LRU|x|LRU|x|
+
 
 
 #### Observações Sobre _Pipeline_s
