@@ -43,11 +43,20 @@ A cada ciclo uma instrução está sendo processada em cada elemento do _pipelin
 - superescalar  
 A cada ciclo duas instruções estão sendo processadas em cada elemento do _pipeline_ caso não ocorram _data hazards_.  
 
-#### `Branch prediction`
-- nenhum
-- _always taken_
-- _never taken_
-- _repeat taken/not-taken_
+#### _Branch prediction_
+Pode-se calcular o número de ciclos perdidos por todas instruções de _branch_ avaliando cada instrução do tipo executada conforme o padrão abaixo:  
+- nenhum  
+Toda instrução de _branch_ faz com que a instrução seguinte do _pipeline_ seja atrasada em dois ciclos para que se possa calcular se o resultado será _branch taken_ ou _branck not taken_.  
+- _always taken_  
+Caso a predição de _branch taken_ esteja correta, atrasa-se a próxima instrução em um ciclo para que se possa calcular o endereço de _branch_.  
+Caso a predição esteja errada, a instrução executada após um ciclo é abortada e a instrução correta é atrasada em dois ciclos por ter sido necessário calcular o resultado _branck not taken_.  
+- _never taken_  
+Caso a predição de _branch not taken_ esteja correta, a instrução de _branch_ é simplesmente ignorada e não há atraso para executar a próxima instrução.  
+Caso a predição esteja errada, as instrução executadas em seguida são abortadas e a instrução correta é atrasada em dois ciclos por ter sido necessário calcular o resultado _branck taken_.  
+- _repeat taken/not-taken_  
+Caso a predição de _branch taken_ esteja correta, atrasa-se a próxima instrução em um ciclo para que se possa calcular o endereço de _branch_.  
+Caso a predição de _branch not taken_ esteja correta, a instrução de _branch_ é simplesmente ignorada e não há atraso para executar a próxima instrução.  
+Caso ambas predições estejam erradas, aborta-se o número de instruções executadas erroneamente e a instrução correta é atrasada em dois ciclos por ter sido necessário calcular o resultado _branck taken_.  
 
 #### Cache
 
