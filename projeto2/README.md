@@ -32,6 +32,8 @@ Será considerado um tempo de execução completa do _pipeline_ de 2.5ns, tal qu
 Tempo por estágio de 2.5ns, correspondente a um _clock_ de 400MHz.  
 - 5 estágios  
 Tempo por estágio de 0.5ns, correspondente a um _clock_ de 2.0GHz.  
+Este pipeline será o caso base para estudo neste experimento.  
+Baseado na arquitetura MIPS, os 5 estágios são: IF (instruction fetch), ID (instruction decode and register file read), EX (execute or address calculation), MEM (memory access) e WB (write-back). [1, p. 300]  
 - 7 estágios  
 Tempo por estágio de ~0.36ns, correspondente a um _clock_ de ~2.8GHz.  
 - 13 estágios  
@@ -83,8 +85,12 @@ Os dados a serem avaliados no experimento são:
 - Número de _write-after-read (WAR) data hazards_  
 - Número de _read-after-write (RAW) data hazards_  
 - Número de _write-after-write (WAW) data hazards_  
-- Número de _control hazards_  
-- Número de ciclos perdidos perdidos devido a _hazards_  
+- Número de ciclos perdidos perdidos devido a _data hazards_  
+- Número de _correct branch taken predictions_  
+- Número de _correct branch not taken predictions_  
+- Número de _branch mispredictions_  
+- Número de ciclos perdidos devido a _control hazards_  
+- Número de ciclos perdidos devido a _hazards_ de qualquer tipo  
 - Número de instruções executadas  
 - Número total de ciclos de execução considerando o número de estágios do _pipeline_  
 - Tempo estimado de execução  
@@ -92,7 +98,6 @@ Os dados a serem avaliados no experimento são:
 #### Observações Sobre _Pipeline_s
 
 ##### 5 Estágios
-Baseado na arquitetura MIPS. Os 5 estágios são: IF (instruction fetch), ID (instruction decode and register file read), EX (execute or address calculation), MEM (memory access) e WB (write-back).[1, p. 300] 
 ##### 7 Estágios
 ##### 13 Estágios
 #### Arquitetura Superescalar 
