@@ -26,7 +26,7 @@ Os arquivos foram obtidos dos servidores do IC sob o diretório
 Seguem abaixo as opções escolhidas para cada configuração do experimento:
 
 #### _Pipeline_:
-O tempo estimado de execução de um programa é `(#instr + #stalls + (#estágios - 1)) · tempo_por_estágio`.  
+O tempo estimado de execução de um programa é `(#instr + #stalls + (#estágios - 1)) · tempo_por_estágio + (l1_hits * l1_custo + l2_hits * l2_custo + l2_misses * ram_custo)`.  
 Será considerado um tempo de execução completa do _pipeline_ de 2.5ns, tal que para:  
 - 1 estágio  
 Tempo por estágio de 2.5ns, correspondente a um _clock_ de 400MHz.  
@@ -62,6 +62,33 @@ Caso ambas predições estejam erradas, aborta-se o número de instruções exec
 
 #### Cache
 
+O número de ciclos estimado para acesso às memórias são[2]:
+- L1 Data Cache Latency = 5 cycles
+- L2 Cache Latency = 12 cycles
+- RAM Latency = 42 cycles + 51 ns
+
+Portanto, considerando cada pipeline separadamente, o tempo total para cada categoria de acesso é (baseado nos tempos de estágio listados na sessão pipeline):
+##### Pipeline 1
+- L1 Data Cache Latency = 12.5 ns
+- L2 Cache Latency = 30 cycles
+- RAM Latency = 156 ns
+
+##### Pipeline 5
+- L1 Data Cache Latency = 2.5 ns
+- L2 Cache Latency = 6 ns
+- RAM Latency = 72 ns
+
+##### Pipeline 7
+- L1 Data Cache Latency = 1.8 ns
+- L2 Cache Latency =  4.3 ns
+- RAM Latency = 66 ns
+
+##### Pipeline 13
+- L1 Data Cache Latency =  0.95 ns
+- L2 Cache Latency = 2.3 ns 
+- RAM Latency = 59 ns
+
+
 |configurações|cache 1|cache 2|cache 3|cache 4|
 |---|:---:|:---:|:---:|:---:|
 |L1 instruction size|128KB|128KB|32KB|32KB|
@@ -80,6 +107,8 @@ Caso ambas predições estejam erradas, aborta-se o número de instruções exec
 |L2 unified fetch policy|always|x|always|x|
 |L2 unified replacement policy|LRU|x|LRU|x|
 
+## Análise e Resultados
+<br/>
 
 Os dados a serem avaliados no experimento são:
 - Número de _write-after-read (WAR) data hazards_  
@@ -119,10 +148,6 @@ Os dados a serem avaliados no experimento são:
 |total de ciclos|35787807|49165904|39464255|89682194|35787803|49165900|39464251|89682190|35787809|49165906|39464257|89682196|35787815|49165912|39464263|89682202|38810997|59347054|45866010|106055234|38810997|59347054|45866010|106055234|38810997|59347054|45866010|106055234|38810997|59347054|45866010|106055234|38810997|59347054|45866010|106055234|38810997|59347054|45866010|106055234|38810997|59347054|45866010|106055234|  
 |tempo estimado de execução (s)|0.018|0.025|0.020|0.045|0.089|0.123|0.099|0.224|0.013|0.018|0.014|0.032|0.007|0.009|0.008|0.017|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|  
 
-
-## Resultados e Análise
-<br/>
-
 ## Conclusão
 <br/>
 
@@ -130,3 +155,4 @@ Os dados a serem avaliados no experimento são:
 <br/>
 
 1. Patterson, D. A., & Hennessy, J. L. 2014. Computer Organization And Design. 5th ed. 
+2. http://www.7-cpu.com/cpu/Skylake.html
