@@ -35,7 +35,7 @@ Serão avaliados números de hazards, número de ciclos, tempo de execução, mi
 ####Hazards
 Vamos trabalhar com dois tipos de hazards: hazards de dados e hazards de controle. 
 
-O hazard de dados surge quando uma instrução tem uma dependência com uma instrução anterior que ainda não foi finalizada, ou seja, dados necessários à instrução atual não estão disponíveis. Existem três tipos de hazards de dados: 
+O hazard de dados surge quando uma instrução tem uma dependência com uma instrução anterior que ainda não foi finalizada, ou seja, dados necessários à instrução atual não estão disponíveis.[1, p. 278] Existem três tipos de hazards de dados: 
 - Read After Write (RAW) : i2 tenta ler uma informação antes que i1 tenha escrito ela. Por exemplo :  
 i1. R2 <- R1 + R3  
 i2. R4 <- R2 + R3  
@@ -53,13 +53,13 @@ Numero de ciclos = accessos + nHits * penalidadeHits + nMiss * penalidadeMiss
 i1. R4 <- R1 + R5  
 i2. R5 <- R1 + R2
 
- Não precisamos contabilizar esses hazards porque eles são resolvidos pelo fordwarding.
+ Não precisamos contabilizar esses hazards porque eles não ocorrem para a arquitetura MIPS considerada.[2, p. 1]
 
 - Write After Write (WAW) : i2 tenta escrever uma operand antes que ela esteja escrita por i1. Por exemplo :  
 i1. R2 <- R4 + R7  
 i2. R2 <- R1 + R3
 
- Esse hazard só tem que ser contabilizado se se usa um processador superescalar.
+ Esse hazard só será contabilizado para o caso em que usaremos um processador superescalar.
 
 
 
@@ -109,6 +109,11 @@ Implementar os pipelines (5, 7, 13estágios).
 Terminar a implementação dos processadores escalar/superescalar.
 Rodar os testes e escrever o relatório final.
 
+## Referências
+<br/>
 
+1. Patterson, D. A., & Hennessy, J. L. 2014. Computer Organization And Design. 5th ed. 
+2. Sorin et al (2009). ECE 252 / CPS 220 Lecture Notes
+Pipelining. Retirado de http://people.ee.duke.edu/~sorin/ece252/lectures/2.2-pipelining.pdf
 
 
