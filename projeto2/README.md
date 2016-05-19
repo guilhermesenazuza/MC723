@@ -33,13 +33,15 @@ Tempo por estágio de 2.5ns, correspondente a um _clock_ de 400MHz.
 - 5 estágios  
 Tempo por estágio de 0.5ns, correspondente a um _clock_ de 2.0GHz.  
 - 7 estágios  
-Tempo por estágio de 0.36ns, correspondente a um _clock_ de ~2.8GHz.  
+Tempo por estágio de ~0.36ns, correspondente a um _clock_ de ~2.8GHz.  
 - 13 estágios  
-Tempo por estágio de 0.19ns, correspondente a um _clock_ de ~5.2GHz.  
+Tempo por estágio de ~0.19ns, correspondente a um _clock_ de ~5.2GHz.  
 
 #### Paralelismo de instruções
-- escalar
-- superescalar
+- escalar  
+A cada ciclo uma instrução está sendo processada em cada elemento do _pipeline_ caso não ocorram _data hazards_.  
+- superescalar  
+A cada ciclo duas instruções estão sendo processadas em cada elemento do _pipeline_ caso não ocorram _data hazards_.  
 
 #### `Branch prediction`
 - nenhum
