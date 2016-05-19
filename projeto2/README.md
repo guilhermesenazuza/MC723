@@ -1,21 +1,30 @@
-# Relatório Projeto 2 
+# Projeto 2: Desempenho do Processador
 
-#### Integrantes
+#### Equipe
 - Gabriel Bueno de Oliveira 139455
 - Pedro Rodrigues Grijó 139715
 - Titouan Thibaud 180879
 - Yugo Kuno 033324 
 
+
 ## Introdução
-<br/>
-Este projeto tem como objetivo a avaliação do impacto e desempenho de um processador de várias características arquiteturais estudadas na disciplina teórica MC722 - Projeto de Sistemas Computacionais.
+O desempenho de um processador não se resume à sua frequência de clock ou ao seu número de núcleos. Muito além da "potência" em números da CPU, uma parte fundamental do seu desempenho depende de uma arquitetura bem planejada e que seja apropriada para as sequências de instruções mais comuns nos programas que demandam alta performance.  
+Com isso em mente, foram realizados experimentos em simulação do processamento de quatro benchmarks com diferentes configurações de arquitetura de CPU. Para avaliação foi considerado o impacto no número de ciclos dos programas a partir da mudança de parâmetros da CPU como o tamanho de pipeline, o processador ser escalar ou superescalar, o tipo de _branch predictor_ e as configurações de _cache_.
+
 
 ## Metodologia
-<br/>
-A avaliação de impacto e desempenho foi realizada no simulador MIPS baseado em [ArchC](http://www.archc.org/). 
-As configurações utilizadas e os critérios avaliados podem ser encontrados no [roteiro](https://github.com/pedrogrijo/MC723/blob/master/projeto2/ROTEIRO.md)
- deste projeto.
- 
+Neste experimento foi usado um simulador do processador MIPS, criado com a linguagem ArchC, criado pelo time do IC/Unicamp de mesmo nome e baseado na linguagem de descrição de hardware SystemC. O ArchC permite, entre outras funcionalidades, a avalição do número de execuções de cada tipo de instrução pelo programa e o que ocorre com o _dataflow_ a cada instrução.
+
+Seguem abaixo as opções escolhidas para cada configuração do experimento:
+
+### Benchmarks:
+- dijkstra
+- bitcount
+- qsort
+- susan
+Estes benchmarks foram obtidos dos servidores do IC sob o diretório `/home/staff/lucas/mc723/ex3/MipsMibench/`.
+
+
 #### Observações Sobre Pipelines
 
 ##### 5 Estágios
