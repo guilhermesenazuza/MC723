@@ -1,0 +1,52 @@
+
+        SystemC 2.3.1-Accellera --- May  6 2016 08:53:17
+        Copyright (c) 1996-2014 by all Contributors,
+        ALL RIGHTS RESERVED
+ArchC: Reading ELF application file: ../../run_dir/susan/susan.mips
+ArchC: -------------------- Starting Simulation --------------------
+
+ArchC: -------------------- Simulation Finished --------------------
+                   1 y4k_superscalar_idx
+
+              562281 y4k_nottaken
+             2087072 y4k_taken
+
+              305281 y4k_nt_after_nt
+              257000 y4k_nt_after_t
+              257000 y4k_t_after_nt
+             1830072 y4k_t_after_t
+
+                1119 y4k_lb
+             4884175 y4k_lbu
+                 144 y4k_lh
+                   0 y4k_lhu
+            21271011 y4k_lw
+                2071 y4k_lwl
+                2071 y4k_lwr
+               10627 y4k_sb
+                  43 y4k_sh
+            12406943 y4k_sw
+                2071 y4k_swl
+                2071 y4k_swr
+
+              174394 y4k_j
+              106920 y4k_jal
+              106941 y4k_jr
+                  18 y4k_jalr
+             2184892 y4k_beq
+              404742 y4k_bne
+               10357 y4k_blez
+                1045 y4k_bgtz
+               15640 y4k_bltz
+               32677 y4k_bgez
+                   0 y4k_bltzal
+                   0 y4k_bgezal
+
+            16579694 y4k_nosuperscalar
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+ArchC: Simulation statistics
+    Times: 11.91 user, 0.31 system, 12.21 real
+    Number of instructions executed: 89682190
+    Simulation speed: 7529.99 K instr/s
+

@@ -1,0 +1,52 @@
+
+        SystemC 2.3.1-Accellera --- May  6 2016 08:53:17
+        Copyright (c) 1996-2014 by all Contributors,
+        ALL RIGHTS RESERVED
+ArchC: Reading ELF application file: ../../run_dir/bitcount/bitcnts.mips
+ArchC: -------------------- Starting Simulation --------------------
+
+ArchC: -------------------- Simulation Finished --------------------
+                   1 y4k_superscalar_idx
+
+             2552408 y4k_nottaken
+             4134899 y4k_taken
+
+               76079 y4k_nt_after_nt
+             2476329 y4k_nt_after_t
+             2476328 y4k_t_after_nt
+             1658571 y4k_t_after_t
+
+             1800897 y4k_lb
+                 844 y4k_lbu
+                 206 y4k_lh
+                   0 y4k_lhu
+               10414 y4k_lw
+                   0 y4k_lwl
+                   0 y4k_lwr
+                 515 y4k_sb
+                  28 y4k_sh
+               82289 y4k_sw
+                   0 y4k_swl
+                   0 y4k_swr
+
+               75802 y4k_j
+                 744 y4k_jal
+              525814 y4k_jr
+              525012 y4k_jalr
+             2327762 y4k_beq
+             4359374 y4k_bne
+                  74 y4k_blez
+                  36 y4k_bgtz
+                  23 y4k_bltz
+                  38 y4k_bgez
+                   0 y4k_bltzal
+                   0 y4k_bgezal
+
+             6174880 y4k_nosuperscalar
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+ArchC: Simulation statistics
+    Times: 3.52 user, 0.16 system, 3.60 real
+    Number of instructions executed: 35787803
+    Simulation speed: 10166.99 K instr/s
+

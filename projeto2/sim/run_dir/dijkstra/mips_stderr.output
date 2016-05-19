@@ -1,0 +1,52 @@
+
+        SystemC 2.3.1-Accellera --- May  6 2016 08:53:17
+        Copyright (c) 1996-2014 by all Contributors,
+        ALL RIGHTS RESERVED
+ArchC: Reading ELF application file: ../../run_dir/dijkstra/dijkstra_small.mips
+ArchC: -------------------- Starting Simulation --------------------
+
+ArchC: -------------------- Simulation Finished --------------------
+                   1 y4k_superscalar_idx
+
+             4908525 y4k_nottaken
+             3828804 y4k_taken
+
+             3182872 y4k_nt_after_nt
+             1725653 y4k_nt_after_t
+             1725652 y4k_t_after_nt
+             2103152 y4k_t_after_t
+
+              113807 y4k_lb
+               81152 y4k_lbu
+               30966 y4k_lh
+                   0 y4k_lhu
+             8979743 y4k_lw
+                   0 y4k_lwl
+                   0 y4k_lwr
+               31446 y4k_sb
+                 260 y4k_sh
+             4756755 y4k_sw
+                   0 y4k_swl
+                   0 y4k_swr
+
+             1729874 y4k_j
+              154330 y4k_jal
+              203856 y4k_jr
+               10262 y4k_jalr
+             6330730 y4k_beq
+             2295902 y4k_bne
+               44583 y4k_blez
+               10699 y4k_bgtz
+               34606 y4k_bltz
+               20809 y4k_bgez
+                   0 y4k_bltzal
+                   0 y4k_bgezal
+
+            10606832 y4k_nosuperscalar
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+ArchC: Simulation statistics
+    Times: 5.87 user, 0.17 system, 6.01 real
+    Number of instructions executed: 49165900
+    Simulation speed: 8375.79 K instr/s
+
