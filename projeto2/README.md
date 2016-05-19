@@ -32,8 +32,7 @@ Será considerado um tempo de execução completa do _pipeline_ de 2.5ns, tal qu
 Tempo por estágio de 2.5ns, correspondente a um _clock_ de 400MHz.  
 - 5 estágios  
 Tempo por estágio de 0.5ns, correspondente a um _clock_ de 2.0GHz.  
-Este pipeline será o caso base para estudo neste experimento.  
-Baseado na arquitetura MIPS, os 5 estágios são: IF (instruction fetch), ID (instruction decode and register file read), EX (execute or address calculation), MEM (memory access) e WB (write-back). [1, p. 300]  
+Este pipeline será o caso base para estudo neste experimento; baseado na arquitetura MIPS, os 5 estágios são: IF (instruction fetch), ID (instruction decode and register file read), EX (execute or address calculation), MEM (memory access) e WB (write-back). [1, p. 300]  
 - 7 estágios  
 Tempo por estágio de ~0.36ns, correspondente a um _clock_ de ~2.8GHz.  
 - 13 estágios  
@@ -43,7 +42,8 @@ Tempo por estágio de ~0.19ns, correspondente a um _clock_ de ~5.2GHz.
 - escalar  
 A cada ciclo uma instrução está sendo processada em cada elemento do _pipeline_ caso não ocorram _hazards_; como _forwarding_ resolve todos os _data hazards_, serão perdidos ciclos apenas nos casos de _control hazard_, que serão avaliados na seção de _Branch prediction_ abaixo.  
 - superescalar  
-A cada ciclo duas instruções estão sendo processadas em cada elemento do _pipeline_ caso não ocorram _hazards_; como as instruções estão ocorrendo em paralelo, o _forwarding_ não consegue resolver os _data hazards_, tal que perde-se a segunda instrução do par sempre que isto ocorrer. Da mesma forma _control hazards_ serão avaliados na seção de _Branch prediction_ abaixo.  
+Será utilizado um pacote (_issue packet_) de duas instruções baseado no _pipeline_ de 5 estágios da arquitetura MIPS. Os pacotes representam o conjunto de instruções que serão enviadas em conjunto em um ciclo de clock. Apesar de atualmente existirem processadores que podem enviar pacotes de 4 a 6 instruções, o valor de duas instruções foi escolhido devido a existência de poucas aplicações que podem sustentar um número maior de instruções por ciclo de clock. Isso ocorre devido a dependências que não podem ser resolvidas em paralelo e a perdas na hierarquia de memória que limitam a capacidade do _pipeline_ de se manter cheio. [1, p. 343] 
+Como as instruções estão ocorrendo em paralelo, o _forwarding_ não consegue resolver os _data hazards_, tal que perde-se a segunda instrução do par sempre que isto ocorrer. Da mesma forma que no caso escalar, _control hazards_ serão avaliados na seção de _Branch prediction_ abaixo.  
 
 #### _Branch prediction_
 Pode-se calcular o número de ciclos perdidos por todas instruções de _branch_ avaliando cada instrução do tipo executada conforme o padrão abaixo:  
@@ -85,7 +85,7 @@ Os dados a serem avaliados no experimento são:
 - Número de _write-after-read (WAR) data hazards_  
 - Número de _read-after-write (RAW) data hazards_  
 - Número de _write-after-write (WAW) data hazards_  
-- Número de ciclos perdidos perdidos devido a _data hazards_  
+- Número de ciclos perdidos devido a _data hazards_  
 - Número de _correct branch taken predictions_  
 - Número de _correct branch not taken predictions_  
 - Número de _branch mispredictions_  
@@ -95,17 +95,30 @@ Os dados a serem avaliados no experimento são:
 - Número total de ciclos de execução considerando o número de estágios do _pipeline_  
 - Tempo estimado de execução  
 
-#### Observações Sobre _Pipeline_s
 
-##### 5 Estágios
-##### 7 Estágios
-##### 13 Estágios
-#### Arquitetura Superescalar 
-Essa técnica permite o processamento de mais de uma instrução por estágio do _pipeline_, o que por sua vez torna possível a obtenção de CPI (ciclos por instrução) menor que 1. As instruções são selecionadas durante a execução. 
 
-Trabalharemos com um pacote(*issue packet*) de duas instruções baseado no _pipeline_ de 5 estágios da arquitetura MIPS. Os pacotes representam o conjunto de instruções que serão enviadas em conjunto em um ciclo de clock. Apesar de atualmente existirem processadores que podem enviar pacotes de 4 a 6 instruções, o valor de duas instruções foi escolhido devido a existência de poucas aplicações que podem sustentar um número maior de instruções por ciclo de clock. Isso ocorre devido a dependências que não podem ser resolvidas em paralelo e a perdas na hierarquia de memória que limitam a capacidade do _pipeline_ de se manter cheio.[1, p. 343] 
 
-Para representar o processador superescalar, foi utilizado um vetor para guardar o pacote de instruções. Conforme uma instrução é recebida, ela é adicionada ao pacote apenas se a instrução que já estiver nele não conflitar(Write After Write) com a instrução que chegou. No caso de conflitos, o pacote é enviado com apenas uma instrução(neste caso há aumento de CPI) e a instrução que acabou de chegar só irá no próximo pacote. Caso não haja conflitos, a instrução é adicionada ao pacote, que é enviado normalmente. Essa abordagem faz com que as instruções recebidas sejam enviadas em ordem, ou seja, não há reordenação de instruções. Porém, apesar da escolha limitada, o envio é dinâmico
+
+|configurações|conf. 1|←|←|←|conf. 2|←|←|←|conf. 3|←|←|←|conf. 4|←|←|←|conf. 5||||conf. 6|←|←|←|conf. 7||||conf. 8|←|←|←|conf. 9|←|←|←|conf. 10|←|←|←|conf. 11|←|←|←|  
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|  
+|tamanho de pipeline|5|←|←|←|1|←|←|←|7|←|←|←|13|←|←|←|5|←|←|←|5|←|←|←|5|←|←|←|5|←|←|←|5|←|←|←|5|←|←|←|5|←|←|←|  
+|instr. paral.|escalar|←|←|←|escalar|←|←|←|escalar|←|←|←|escalar|←|←|←|superescalar|←|←|←|superescalar|←|←|←|superescalar|←|←|←|superescalar|←|←|←|superescalar|←|←|←|superescalar|←|←|←|superescalar|←|←|←|  
+|branch predictor|no prediction|←|←|←|no prediction|←|←|←|no prediction|←|←|←|no prediction|←|←|←|no prediction|←|←|←|always|←|←|←|never|←|←|←|repeat|←|←|←|repeat|←|←|←|repeat|←|←|←|repeat|←|←|←|  
+|cache|cache 1|←|←|←|cache 1|←|←|←|cache 1|←|←|←|cache 1|←|←|←|cache 1|←|←|←|cache 1|←|←|←|cache 1|←|←|←|cache 1|←|←|←|cache 2|←|←|←|cache 3|←|←|←|cache 4|←|←|←|  
+|benchmark|bitcount|dijkstra|qsort|susan|bitcount|dijkstra|qsort|susan|bitcount|dijkstra|qsort|susan|bitcount|dijkstra|qsort|susan|bitcount|dijkstra|qsort|susan|bitcount|dijkstra|qsort|susan|bitcount|dijkstra|qsort|susan|bitcount|dijkstra|qsort|susan|bitcount|dijkstra|qsort|susan|bitcount|dijkstra|qsort|susan|bitcount|dijkstra|qsort|susan|  
+|hazards WAR|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|77891|1995573|2054542|5314374|77891|1995573|2054542|5314374|77891|1995573|2054542|5314374|77891|1995573|2054542|5314374|77891|1995573|2054542|5314374|77891|1995573|2054542|5314374|77891|1995573|2054542|5314374|  
+|hazards RAW|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|2793636|7538347|3756005|10865906|2793636|7538347|3756005|10865906|2793636|7538347|3756005|10865906|2793636|7538347|3756005|10865906|2793636|7538347|3756005|10865906|2793636|7538347|3756005|10865906|2793636|7538347|3756005|10865906|  
+|hazards WAW|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|151663|647230|591208|192760|151663|647230|591208|192760|151663|647230|591208|192760|151663|647230|591208|192760|151663|647230|591208|192760|151663|647230|591208|192760|151663|647230|591208|192760|  
+|ciclos perdidos por data hazards|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|3023190|10181150|6401755|16373040|3023190|10181150|6401755|16373040|3023190|10181150|6401755|16373040|3023190|10181150|6401755|16373040|3023190|10181150|6401755|16373040|3023190|10181150|6401755|16373040|3023190|10181150|6401755|16373040|  
+|correct branch-taken predictions|||||||||||||||||||||||||||||||||||||||||||||  
+|correct branch-not-taken predictions|||||||||||||||||||||||||||||||||||||||||||||  
+|branch mispredictions|||||||||||||||||||||||||||||||||||||||||||||  
+|ciclos perdidos por control hazards|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|  
+|ciclos perdidos por hazards|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|3023190|10181150|6401755|16373040|3023190|10181150|6401755|16373040|3023190|10181150|6401755|16373040|3023190|10181150|6401755|16373040|3023190|10181150|6401755|16373040|3023190|10181150|6401755|16373040|3023190|10181150|6401755|16373040|  
+|instruções executadas|35787803|49165900|39464251|89682190|35787803|49165900|39464251|89682190|35787803|49165900|39464251|89682190|35787803|49165900|39464251|89682190|35787803|49165900|39464251|89682190|35787803|49165900|39464251|89682190|35787803|49165900|39464251|89682190|35787803|49165900|39464251|89682190|35787803|49165900|39464251|89682190|35787803|49165900|39464251|89682190|35787803|49165900|39464251|89682190|  
+|total de ciclos|35787807|49165904|39464255|89682194|35787803|49165900|39464251|89682190|35787809|49165906|39464257|89682196|35787815|49165912|39464263|89682202|38810997|59347054|45866010|106055234|38810997|59347054|45866010|106055234|38810997|59347054|45866010|106055234|38810997|59347054|45866010|106055234|38810997|59347054|45866010|106055234|38810997|59347054|45866010|106055234|38810997|59347054|45866010|106055234|  
+|tempo estimado de execução (s)|0.018|0.025|0.020|0.045|0.089|0.123|0.099|0.224|0.013|0.018|0.014|0.032|0.007|0.009|0.008|0.017|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|  
+
 
 ## Resultados e Análise
 <br/>
