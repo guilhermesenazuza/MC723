@@ -41,7 +41,7 @@ Tempo por estágio de ~0.19ns, correspondente a um _clock_ de ~5.2GHz.
 - escalar  
 A cada ciclo uma instrução está sendo processada em cada elemento do _pipeline_ caso não ocorram _hazards_; como _forwarding_ resolve todos os _data hazards_, serão perdidos ciclos apenas nos casos de _control hazard_, que serão avaliados na seção de _Branch prediction_ abaixo.  
 - superescalar  
-A cada ciclo duas instruções estão sendo processadas em cada elemento do _pipeline_ caso não ocorram _data hazards_; como as instruções estão ocorrendo em paralelo, o _forwarding_ não consegue resolver os _data hazards_, tal que perde-se a segunda instrução do par sempre que isto ocorrer. Da mesma forma _control hazards_ serão avaliados na seção de _Branch prediction_ abaixo.  
+A cada ciclo duas instruções estão sendo processadas em cada elemento do _pipeline_ caso não ocorram _hazards_; como as instruções estão ocorrendo em paralelo, o _forwarding_ não consegue resolver os _data hazards_, tal que perde-se a segunda instrução do par sempre que isto ocorrer. Da mesma forma _control hazards_ serão avaliados na seção de _Branch prediction_ abaixo.  
 
 #### _Branch prediction_
 Pode-se calcular o número de ciclos perdidos por todas instruções de _branch_ avaliando cada instrução do tipo executada conforme o padrão abaixo:  
@@ -79,6 +79,15 @@ Caso ambas predições estejam erradas, aborta-se o número de instruções exec
 |L2 unified replacement policy|LRU|x|LRU|x|
 
 
+Os dados a serem avaliados no experimento são:
+- Número de _write-after-read (WAR) data hazards_  
+- Número de _read-after-write (RAW) data hazards_  
+- Número de _write-after-write (WAW) data hazards_  
+- Número de _control hazards_  
+- Número de ciclos perdidos perdidos devido a _hazards_  
+- Número de instruções executadas  
+- Número total de ciclos de execução considerando o número de estágios do _pipeline_  
+- Tempo estimado de execução  
 
 #### Observações Sobre _Pipeline_s
 
