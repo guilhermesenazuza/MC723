@@ -19,7 +19,7 @@ Serão avaliados os seguintes benchmarks:
 - dijkstra
 - bitcount
 - qsort
-- susan
+- susan  
 Os arquivos foram obtidos dos servidores do IC sob o diretório
 `/home/staff/lucas/mc723/ex3/MipsMibench/`
 
