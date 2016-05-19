@@ -26,13 +26,12 @@ Os arquivos foram obtidos dos servidores do IC sob o diretório
 Seguem abaixo as opções escolhidas para cada configuração do experimento:
 
 #### _Pipeline_:
+O tempo estimado de execução de um programa é `(#instr + #stalls + (#estágios - 1)) · tempo_por_estágio`.
 Será considerado um tempo de execução completa do _pipeline_ de 2.5ns, tal que para:  
 - 1 estágio  
 Tempo por estágio de 2.5ns, correspondente a um _clock_ de 400MHz.  
-O tempo de execução de um programa é igual `(#instr + #stalls) · 2.5ns`.
 - 5 estágios  
 Tempo por estágio de 0.5ns, correspondente a um _clock_ de 2.0GHz.  
-
 - 7 estágios  
 Tempo por estágio de 0.36ns, correspondente a um _clock_ de ~2.8GHz.  
 - 13 estágios  
