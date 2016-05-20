@@ -20,6 +20,7 @@ Serão avaliados os seguintes benchmarks:
 - bitcount
 - qsort
 - susan  
+
 Os arquivos foram obtidos dos servidores do IC sob o diretório
 `/home/staff/lucas/mc723/ex3/MipsMibench/`
 
@@ -35,7 +36,7 @@ sendo
 - TE: período de execução por estágio do _pipeline_ (inverso do _clock_)  
 - TA: período de acesso à unidade de memória
   
-Como perde-se o tempo de acesso à L1 e à L2 mesmo que os dados procurados não sejam encontrados, é contabilizado no número de _hits_ e não _misses_.
+Como perde-se o tempo de acesso à L1 e à L2 mesmo que os dados procurados não sejam encontrados, deve ser contabilizado no número de _fetches_ e não _hits_ para estas _caches_.
 
 Será considerado um tempo de execução completa do _pipeline_ de 2.5ns, tal que para:  
 - 1 estágio  
