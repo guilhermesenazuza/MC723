@@ -28,7 +28,7 @@ Seguem abaixo as opções escolhidas para cada configuração do experimento:
 #### _Pipeline_:
 O tempo estimado de execução de um programa é  
 `(NI + CP + (NE - 1)) · TE + (L1_fetches · TA_L1) + (L2_fetches · TA_L2) + (L2_misses · TA_RAM)`   
-onde
+sendo
 - NI: número de instruções  
 - CP: número de ciclos perdidos por _data hazards_  
 - NE: número de estágios do _pipeline_  
