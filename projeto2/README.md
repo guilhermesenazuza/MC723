@@ -151,8 +151,26 @@ Os resultados para cada configuração seguem abaixo:
 |tempo total estimado de execução (s)|0.100|0.155|0.128|0.292|0.198|0.288|0.217|0.482|0.093|0.145|0.121|0.278|0.085|0.134|0.114|0.263|0.101|0.160|0.131|0.300|0.099|0.158|0.130|0.299|0.099|0.155|0.130|0.299|0.100|0.156|0.130|0.299|0.100|0.156|0.132|0.299|0.100|0.157|0.132|0.299|0.101|0.167|0.150|0.299|  
 |fração do tempo perdido em latência de memória|75%|78%|82%|84%|38%|42%|48%|51%|81%|84%|87%|88%|89%|90%|92%|93%|74%|76%|80%|81%|76%|77%|81%|82%|76%|78%|81%|82%|75%|78%|81%|82%|75%|78%|81%|82%|75%|78%|81%|82%|75%|80%|84%|82%|
 
+
 ## Conclusão
-Podemos notar claramente a influência positiva nos tempos de execução para os maiores pipelines, já que as tarefas mais complexas são divididas em operações menores que podem ser executadas individualmente mais rapidamente. As políticas de branch prediction analisadas apresentaram desempenho satisfatório já que houve um redução siguinificativa no número de stall e bolhas no pipeline o que acabam influênciando o desempenho do procesador. Por fim notamos também que a parte mais crítica em um processador é o acesso a memória, já que as intruções que realizam as consultas consomem muitos ciclos da cpu a espera da informação. O impacto é reduzido com caches L1 e L2 maiores, porém o tamanho das caches é um ponto crítico na arquitedura de um processador pelo fato do alto custo energético e um maior sobreaquecimento do processador o que pode afetar o desempenho.
+
+Apesar de a avaliação do tamanho de _pipeline_ ter sido uma aproximação simples sem levar em consideração os detalhes de arquiteturas de 1, 7 e 13 estágios, a primeira vista os ganhos com o aumento do número de estágios é expressivo. Como não foram levadas em conta mudanças no número de hazards e o número de instruções é elevado, o número de ciclos e o tempo de execução desconsiderando tempos de acesso a memória é aproximadamente inversamente proporcional ao número de estágios para todos os benchmarks.  
+Por outro lado, levando em conta os tempos expressivos de acesso a memória, comparado ao _pipeline_ de 5 estágios, o de 1 estágio leva somente aproximadamente o dobro do tempo, o de 7 estágios é ligeiramente mais rápido e o de 13 estágios consome ~15% menos tempo (também para todos os benchmarks).  
+
+A mudança para paralelismo superescalar de duas instruções por pacote também reduz significativamente o número de ciclos consumidos e o tempo de execução desconsiderando a latência de memória, com uma redução de ~22% para o _dijkstra_ e ~30% para os demais. Entretanto novamente a latência reduz este ganho para ~7.5% para o _bitcount_ e apenas ~5% para os demais.
+
+A política de _branch prediction_ de _never taken_ tem resultado significativamente melhor comparada as outras para o _bitcount_ e _dijkstra_, provavelmente devido ao fato de que no acerto não se perde qualquer ciclo, enquanto a penalidade é igual aos demais métodos no caso de _misprediction_; o número de _control hazards_ cai para aproximadamente metade quando comparado a _no prediction_.  
+Já para _qsort_ e _susan_ a política de _repeat_ é a melhor, reduzindo em ~40% comparado a _no prediction_.  
+
+Os tempos de acesso à memória são obviamente um gargalo para o desempenho de todos os benchmarks: para o processamento mais ineficiente com _pipeline_ de 1 estágio entre 40 e 50% do tempo total é consumido em latência, enquanto para o mais eficiente com 13 estágio a fração do tempo de latência chega a ~90% do tempo total. No caso padrão de 5 estágios essa fração fica entre 80 e 90%.  
+
+Para o _bitcount_ as quatro configurações de cache geram resultados praticamente indistinguíveis.
+Para os demais _benchmarks_, há pouca diferença entre a configuração de cache 1 e 2, sendo que a perda da L2 gerou aumentos em latência inferiores a 3%.  
+O mesmo ocorre entre a cache 1 e 3, sendo que a redução de tamanho de L1 e L2 gerou aumentos inferiores a 2.5%.  
+Entretanto a perda da L2 da cache 4 comparada à 3 é mais significativa para _dijkstra_ e _qsort_, gerando aumentos de latência de ~8% e ~16%, respectivamente.  
+
+Encerrando a análise do experimento, percebe-se como as diferentes configurações de arquitetura tem impactos significativos na execução de instruções propriamente dita; apesar disso não há uma "configuração ótima" que atenda todos os _benchmarks_ aqui avaliados, quanto mais todas as aplicações utilizadas em computadores.  
+Por outro lado percebe-se como é significativo o gargalo imposto pelo acesso a memória, sendo a redução desta latência um dos pontos mais relevantes para melhorar o desempenho de quaisquer programas que demandem acesso a um volume minimamente significativo de dados.
 
 
 ## Referências
