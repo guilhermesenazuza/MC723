@@ -26,7 +26,10 @@ Os arquivos foram obtidos dos servidores do IC sob o diretório
 Seguem abaixo as opções escolhidas para cada configuração do experimento:
 
 #### _Pipeline_:
-O tempo estimado de execução de um programa é `(#instr + #stalls + (#estágios - 1)) · tempo_por_estágio + (l1_hits * l1_custo + l2_hits * l2_custo + l2_misses * ram_custo)`.  
+O tempo estimado de execução de um programa é  
+`(#instr + #stalls + (#estágios - 1)) · tempo_por_estágio + (L1_fetches * tempo_acesso_L1 + L2_fetches * tempo_acesso_L2 + L2_misses * tempo_acesso_RAM)`  
+Como perde-se o tempo de acesso à L1 e à L2 mesmo que os dados procurados não sejam encontrados, é contabilizado no número de _hits_ e não _misses_.
+
 Será considerado um tempo de execução completa do _pipeline_ de 2.5ns, tal que para:  
 - 1 estágio  
 Tempo por estágio de 2.5ns, correspondente a um _clock_ de 400MHz.  
@@ -60,34 +63,15 @@ Caso a predição de _branch taken_ esteja correta, atrasa-se a próxima instru�
 Caso a predição de _branch not taken_ esteja correta, a instrução de _branch_ é simplesmente ignorada e não há atraso para executar a próxima instrução.  
 Caso ambas predições estejam erradas, aborta-se o número de instruções executadas erroneamente e a instrução correta é atrasada em dois ciclos por ter sido necessário calcular o resultado _branch taken_.  
 
+#### _Memory access latency_
+
+Serão considerados os tempos estimados de acesso às memórias a seguir [2]:
+- fetches em L1i e L1d: 1.1ns  
+- fetches em L2u: 3.0ns  
+- fetches em RAM: 61.5ns  
+Para simplificar as estimativas, assume-se que os dados procurados estarão pelo menos na RAM e o número de fetches nesta é igual ao número de misses na L2.
+
 #### Cache
-
-O número de ciclos estimado para acesso às memórias são[2]:
-- L1 Data Cache Latency = 5 cycles
-- L2 Cache Latency = 12 cycles
-- RAM Latency = 42 cycles + 51 ns
-
-Portanto, considerando cada pipeline separadamente, o tempo total para cada categoria de acesso é (baseado nos tempos de estágio listados na sessão pipeline):
-##### Pipeline 1
-- L1 Data Cache Latency = 12.5 ns
-- L2 Cache Latency = 30 cycles
-- RAM Latency = 156 ns
-
-##### Pipeline 5
-- L1 Data Cache Latency = 2.5 ns
-- L2 Cache Latency = 6 ns
-- RAM Latency = 72 ns
-
-##### Pipeline 7
-- L1 Data Cache Latency = 1.8 ns
-- L2 Cache Latency =  4.3 ns
-- RAM Latency = 66 ns
-
-##### Pipeline 13
-- L1 Data Cache Latency =  0.95 ns
-- L2 Cache Latency = 2.3 ns 
-- RAM Latency = 59 ns
-
 
 |configurações|cache 1|cache 2|cache 3|cache 4|
 |---|:---:|:---:|:---:|:---:|
@@ -107,10 +91,10 @@ Portanto, considerando cada pipeline separadamente, o tempo total para cada cate
 |L2 unified fetch policy|always|x|always|x|
 |L2 unified replacement policy|LRU|x|LRU|x|
 
-## Análise e Resultados
-<br/>
 
-Os dados a serem avaliados no experimento são:
+## Análise e Resultados
+
+Os dados avaliados no experimento foram:
 - Número de _write-after-read (WAR) data hazards_  
 - Número de _read-after-write (RAW) data hazards_  
 - Número de _write-after-write (WAW) data hazards_  
@@ -122,11 +106,13 @@ Os dados a serem avaliados no experimento são:
 - Número de ciclos perdidos devido a _hazards_ de qualquer tipo  
 - Número de instruções executadas  
 - Número total de ciclos de execução considerando o número de estágios do _pipeline_  
+- Número de _fetches_ em L1
+- Número de _fetches_ em L2
+- Número de _misses_ em L2
+- Tempo total usado em _memory access_
 - Tempo estimado de execução  
 
-
-
-
+Os resultados para cada configuração seguem abaixo:
 
 |configurações|conf. 1|←|←|←|conf. 2|←|←|←|conf. 3|←|←|←|conf. 4|←|←|←|conf. 5||||conf. 6|←|←|←|conf. 7||||conf. 8|←|←|←|conf. 9|←|←|←|conf. 10|←|←|←|conf. 11|←|←|←|  
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|  
@@ -149,10 +135,8 @@ Os dados a serem avaliados no experimento são:
 |tempo estimado de execução (s)|0.018|0.025|0.020|0.045|0.089|0.123|0.099|0.224|0.013|0.018|0.014|0.032|0.007|0.009|0.008|0.017|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|  
 
 ## Conclusão
-<br/>
 
 ## Referências
-<br/>
 
 1. Patterson, D. A., & Hennessy, J. L. 2014. Computer Organization And Design. 5th ed. 
 2. http://www.7-cpu.com/cpu/Skylake.html
