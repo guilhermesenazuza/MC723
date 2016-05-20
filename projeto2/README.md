@@ -51,10 +51,10 @@ Tempo por estágio de ~0.19ns, correspondente a um _clock_ de ~5.2GHz.
 
 #### Paralelismo de instruções
 - escalar  
-A cada ciclo uma instrução está sendo processada em cada elemento do _pipeline_ caso não ocorram _hazards_; como _forwarding_ resolve todos os _data hazards_, serão perdidos ciclos apenas nos casos de _control hazard_, que serão avaliados na seção de _Branch prediction_ abaixo.  
+A cada ciclo uma instrução está sendo processada em cada elemento do _pipeline_ caso não ocorram _hazards_; como _forwarding_ resolve todos os _data hazards_, serão perdidos ciclos apenas nos casos de _control hazard_, que serão avaliados na seção _Branch prediction_ abaixo.  
 - superescalar  
-Foi utilizado um pacote (_issue packet_) de duas instruções baseado no _pipeline_ de 5 estágios da arquitetura _MIPS_. Os pacotes representam o conjunto de instruções que serão enviadas em conjunto em um ciclo de _clock_. Apesar de atualmente existirem processadores que podem enviar pacotes de 4 a 6 instruções, o valor de duas instruções foi escolhido devido a existência de poucas aplicações que podem sustentar um número maior de instruções por ciclo de _clock_. Isso ocorre devido a dependências que não podem ser resolvidas em paralelo e a perdas na hierarquia de memória que limitam a capacidade do _pipeline_ de se manter cheio. [1, p. 343] 
-Como as instruções estão ocorrendo em paralelo, o _forwarding_ não consegue resolver os _data hazards_, tal que perde-se a segunda instrução do par sempre que isto ocorrer. Da mesma forma que no caso escalar, _control hazards_ serão avaliados na seção de _Branch prediction_ abaixo.  
+Foi utilizado um pacote (_issue packet_) de duas instruções baseado no _pipeline_ de 5 estágios da arquitetura _MIPS_. Os pacotes representam o conjunto de instruções que serão enviadas em conjunto em um ciclo de _clock_. Apesar de atualmente existirem processadores que podem enviar pacotes de 4 a 6 instruções, o valor de duas instruções foi escolhido devido a existência de poucas aplicações que podem sustentar um número maior de instruções por ciclo de _clock_. Isso ocorre devido a dependências que não podem ser resolvidas em paralelo e a perdas na hierarquia de memória que limitam a capacidade do _pipeline_ de se manter cheio. [1, p. 343]  
+Como as instruções estão ocorrendo em paralelo, o _forwarding_ não consegue resolver os _data hazards_, tal que perde-se a segunda instrução do par sempre que isto ocorrer. Da mesma forma que no caso escalar, _control hazards_ serão avaliados na seção _Branch prediction_ abaixo.  
 
 #### _Branch prediction_
 Pode-se calcular o número de ciclos perdidos por todas instruções de _branch_ avaliando cada instrução do tipo executada conforme o padrão abaixo:  
@@ -154,13 +154,14 @@ Os resultados para cada configuração seguem abaixo:
 
 ## Conclusão
 
-Apesar de a avaliação do tamanho de _pipeline_ ter sido uma aproximação simples sem levar em consideração os detalhes de arquiteturas de 1, 7 e 13 estágios, a primeira vista os ganhos com o aumento do número de estágios é expressivo. Como não foram levadas em conta mudanças no número de hazards e o número de instruções é elevado, o número de ciclos e o tempo de execução desconsiderando tempos de acesso a memória é aproximadamente inversamente proporcional ao número de estágios para todos os benchmarks.  
-Por outro lado, levando em conta os tempos expressivos de acesso a memória, comparado ao _pipeline_ de 5 estágios, o de 1 estágio leva somente aproximadamente o dobro do tempo, o de 7 estágios é ligeiramente mais rápido e o de 13 estágios consome ~15% menos tempo (também para todos os benchmarks).  
+Apesar de a avaliação do tamanho de _pipeline_ ter sido uma aproximação simples sem levar em consideração os detalhes de arquiteturas de 1, 7 e 13 estágios, a primeira vista os ganhos com o aumento do número de estágios é expressivo. Como não foram levadas em conta mudanças no número de hazards e o número de instruções é elevado, o número de ciclos e o tempo de execução desconsiderando tempos de acesso a memória é quase inversamente proporcional ao número de estágios para todos os benchmarks.  
+Por outro lado, levando em conta os tempos expressivos de acesso a memória e comparando ao _pipeline_ de 5 estágios, o de 1 estágio leva aproximadamente o dobro do tempo, o de 7 estágios é ligeiramente mais rápido e o de 13 estágios consome ~15% menos tempo (também para todos os benchmarks): ganhos bem menos significativos.  
 
-A mudança para paralelismo superescalar de duas instruções por pacote também reduz significativamente o número de ciclos consumidos e o tempo de execução desconsiderando a latência de memória, com uma redução de ~22% para o _dijkstra_ e ~30% para os demais. Entretanto novamente a latência reduz este ganho para ~7.5% para o _bitcount_ e apenas ~5% para os demais.
+A mudança para paralelismo superescalar de duas instruções por pacote também reduz significativamente o número de ciclos consumidos e o tempo de execução desconsiderando a latência de memória, com uma redução de ~22% para o _dijkstra_ e ~30% para os demais. Entretanto a latência novamente reduz este ganho para ~7.5% no caso do _bitcount_ e apenas ~5% para os demais.
 
-A política de _branch prediction_ de _never taken_ tem resultado significativamente melhor comparada as outras para o _bitcount_ e _dijkstra_, provavelmente devido ao fato de que no acerto não se perde qualquer ciclo, enquanto a penalidade é igual aos demais métodos no caso de _misprediction_; o número de _control hazards_ cai para aproximadamente metade quando comparado a _no prediction_.  
-Já para _qsort_ e _susan_ a política de _repeat_ é a melhor, reduzindo em ~40% comparado a _no prediction_.  
+A política de _branch prediction_ de _never taken_ tem resultado significativamente melhor que as outras políticas para o _bitcount_ e _dijkstra_: o número de _control hazards_ cai para aproximadamente metade quando comparado ao _no prediction_.  
+Já para _qsort_ e _susan_ a política de _repeat_ é a melhor, reduzindo em ~40% comparado ao _no prediction_.  
+Essas diferenças se devem às características de _loops_, condicionais, etc do programa, além das características de cada política já discutidas acima.  
 
 Os tempos de acesso à memória são obviamente um gargalo para o desempenho de todos os benchmarks: para o processamento mais ineficiente com _pipeline_ de 1 estágio entre 40 e 50% do tempo total é consumido em latência, enquanto para o mais eficiente com 13 estágio a fração do tempo de latência chega a ~90% do tempo total. No caso padrão de 5 estágios essa fração fica entre 80 e 90%.  
 
