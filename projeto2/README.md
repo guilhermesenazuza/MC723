@@ -143,6 +143,7 @@ Os resultados para cada configuração seguem abaixo:
 |tempo estimado de execução (s)|0.018|0.025|0.020|0.045|0.089|0.123|0.099|0.224|0.013|0.018|0.014|0.032|0.007|0.009|0.008|0.017|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|0.019|0.030|0.023|0.053|  
 
 ## Conclusão
+Podemos notar claramente a influência positiva nos tempos de execução para os maiores pipelines, já que as tarefas mais complexas são divididas em operações menores que podem ser executadas individualmente mais rapidamente. As políticas de branch prediction analisadas apresentaram desempenho satisfatório já que houve um redução siguinificativa no número de stall e bolhas no pipeline o que acabam influênciando o desempenho do procesador. Por fim notamos também que a parte mais crítica em um processador é o acesso a memória, já que as intruções que realizam as consultas consomem muitos ciclos da cpu a espera da informação. O impacto é reduzido com caches L1 e L2 maiores, porém o tamanho das caches é um ponto crítico na arquitedura de um processador pelo fato do alto custo energético e um maior sobreaquecimento do processador o que pode afetar o desempenho.
 
 ## Referências
 
