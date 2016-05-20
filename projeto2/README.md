@@ -152,6 +152,7 @@ Os resultados para cada configuração seguem abaixo:
 |fração do tempo perdido em latência de memória|75%|78%|82%|84%|38%|42%|48%|51%|81%|84%|87%|88%|89%|90%|92%|93%|74%|76%|80%|81%|76%|77%|81%|82%|76%|78%|81%|82%|75%|78%|81%|82%|75%|78%|81%|82%|75%|78%|81%|82%|75%|80%|84%|82%|
 
 ## Conclusão
+Podemos notar claramente a influência positiva nos tempos de execução para os maiores pipelines, já que as tarefas mais complexas são divididas em operações menores que podem ser executadas individualmente mais rapidamente. As políticas de branch prediction analisadas apresentaram desempenho satisfatório já que houve um redução siguinificativa no número de stall e bolhas no pipeline o que acabam influênciando o desempenho do procesador. Por fim notamos também que a parte mais crítica em um processador é o acesso a memória, já que as intruções que realizam as consultas consomem muitos ciclos da cpu a espera da informação. O impacto é reduzido com caches L1 e L2 maiores, porém o tamanho das caches é um ponto crítico na arquitedura de um processador pelo fato do alto custo energético e um maior sobreaquecimento do processador o que pode afetar o desempenho.
 
 ## Referências
 
