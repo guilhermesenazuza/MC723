@@ -27,11 +27,12 @@ Seguem abaixo as opções escolhidas para cada configuração do experimento:
 
 #### _Pipeline_:
 O tempo estimado de execução de um programa é  
-`(NI + CP + (NE - 1)) · TE + (L1_fetches · tempo_acesso_L1) + (L2_fetches · tempo_acesso_L2) + (L2_misses · tempo_acesso_RAM)`   
+`(NI + CP + (NE - 1)) · TE + (L1_fetches · TA_L1) + (L2_fetches · TA_L2) + (L2_misses · TA_RAM)`   
 - NI: número de instruções  
 - CP: número de ciclos perdidos por _data hazards_  
 - NE: número de estágios do _pipeline_  
 - TE: período de execução por estágio do _pipeline_ (inverso do _clock_)  
+- TA: período de acesso à unidade de memória
   
 Como perde-se o tempo de acesso à L1 e à L2 mesmo que os dados procurados não sejam encontrados, é contabilizado no número de _hits_ e não _misses_.
 
