@@ -5,10 +5,10 @@
 
 int main() {
 
-	int *lock = (int *)PERIPHERAL_BASE_ADDRESS;
-	*lock = 1; 
+	int *base = (int *)PERIPHERAL_BASE_ADDRESS;
+	*base = 1; 
 
-	printf("! %d !\n", *lock);
+	printf("Base content: %d\n", *base);
 	return 0;
 }
 
