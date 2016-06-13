@@ -15,7 +15,7 @@ Inicialmente foi criada a aplicação [hello_world.c](https://github.com/pedrogr
 
 Apesar de o valor esperado ser 1, o valor 0 é impresso na saída
 
-Após isso, foram modificadas as funções readm e writem do programa [ac_tlm_peripheral.cpp](https://github.com/pedrogrijo/MC723/blob/master/exercicio4/ac_tlm_peripheral.cppc)(aqui já estão as modificações do passo a seguir) e adicionada uma variável global para armazenar e manipular os valores lidos/escritos, e a aplicação [hello_modified.c](https://github.com/pedrogrijo/MC723/blob/master/exercicio4/hello_modified.c) foi criada. Como pode ser visto na imagem abaixo, após as modificações a saída ocorre conforme o esperado.
+Após isso, foram modificadas as funções readm e writem do programa [ac_tlm_peripheral.cpp](https://github.com/pedrogrijo/MC723/blob/master/exercicio4/ac_tlm_peripheral.cppc) (aqui já estão as modificações do passo a seguir) e adicionada uma variável global para armazenar e manipular os valores lidos/escritos, e a aplicação [hello_modified.c](https://github.com/pedrogrijo/MC723/blob/master/exercicio4/hello_modified.c) foi criada. Como pode ser visto na imagem abaixo, após as modificações a saída ocorre conforme o esperado.
 
 ![](/exercicio4/images/sim_output2.png)
 
