@@ -55,7 +55,7 @@ ac_tlm_peripheral::ac_tlm_peripheral( sc_module_name module_name , int k ) :
     
 }
 
-int data = 0;
+uint32_t data = 0;
 
 /// Destructor
 ac_tlm_peripheral::~ac_tlm_peripheral() {
@@ -83,6 +83,7 @@ ac_tlm_rsp_status ac_tlm_peripheral::writem( const uint32_t &a , const uint32_t 
 ac_tlm_rsp_status ac_tlm_peripheral::readm( const uint32_t &a , uint32_t &d )
 {
   d = data;
+  data = 1;
   return SUCCESS;
 }
 

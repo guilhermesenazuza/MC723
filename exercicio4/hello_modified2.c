@@ -6,10 +6,12 @@
 int main() {
 
 	volatile int *base = (volatile int *)PERIPHERAL_BASE_ADDRESS;
-	*base = 1; 
+	*base = 1;
+	int i = 5; 
 
-  while(*base < 5)
-	 printf("Base content: %d\n", *base++);
-	 
+  	while(i > 0) {
+		 printf("Data: %d, Position: %d\n", *base, base++);
+		i--;
+	}
 	return 0;
 }
