@@ -36,8 +36,15 @@ Executamos os testes e obtivemos os seguintes resultados.
 | temp user       | 27.11               | 27.98                | 3.06                 | 3.42                | 1.26     | 
 
 
-<br/>
-Como  podemos observar na imagem abaixo, obtivemos uma grande diferença no número de instruções para os processadores com 2 e 4 núcleos
+| averages        | pi seq.     | pi seq.  periférico | pi paralelo (2cores) | pi paralelo (4cores) | pi seq. novo perif. | 
+|-----------------|-------------|---------------------|----------------------|----------------------|---------------------| 
+| #instructions   | 415558220.6 | 406041536           | 39774757             | 39825072             | 17808886            | 
+| pi aproximation | 3.137288    | 3.1328              | -                    | -                    | 3.5896              | 
+| temp user       | 27.284      | 26.858              | 2.53                 | 3.376                | 1.48                | 
+
+Não conseguimos obter o valor da aproximação de pi para a execução multicore devido a presença de um bug no simulador onde a presença do print que exibia a aproximação de pi atrapalhava a simulação, devido a isso os valores para a aproximação nestes casos não foram obtidas. 
+Ao análisar o número de instruções obtivemos uma grande discrepância das duas primeira simulações (pi seq. e pi seq. periférico) das demais,como pode ser observado na primeira imagem abaixo, isso se dá principalmente devido ao fato de termos alterarmos os tipos dos dados de *long long unsigned* para *unsigned int* nas simulações de pi paralelo(2 e 4 cores) e pi seq. novo perf. para otimizarmos esse tipo de operação. Como em um processador como  o mips fazer operações matemáticas com números longos em mips demanda muitas movimentações de registradores e o uso de vários registradores em alguns casos. Podemos notar ao analisar os tempos de execução(segunda imagem) que as otimizações implementadas para as  simulações seguintes surtiram grande efeito. Por fim, as otimizações empregadas impactaram na aproximação de pi obtida mas ainda obtivemos uma boa aproximação. 
+
 <br/>
 ![](/projeto3/images/avg.png "")
 <br/>
