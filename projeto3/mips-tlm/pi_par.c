@@ -18,12 +18,20 @@ void ReleaseLock() {
 	*lock = 0;
 }
 
-long long unsigned int monte_carlo_pi(unsigned int n, int procNumber) {
+void setSeed(int seed) {
+	*randNum = seed;
+}
+
+int getRandomNumber() {
+	return *randNum;
+}
+
+int monte_carlo_pi(unsigned int n, int procNumber) {
 	AcquireLock();
 	printf("CORE %d\n", procNumber);
 	ReleaseLock();
 	int in = 0, i;
-	float x, y, d;
+	int x, y, d;
         int limit;
 	
         limit = n*(procNumber + 1)/CORES;
@@ -34,25 +42,29 @@ long long unsigned int monte_carlo_pi(unsigned int n, int procNumber) {
 	
 	
 	for (i = n*procNumber/CORES; i < limit; i++) {
-		x = ((*randNum % 1000000)/500000.0)-1;
-		y = ((*randNum % 1000000)/500000.0)-1;
+		//x = ((*randNum % 1000000)/500000.0)-1;
+		x = (((getRandomNumber() % 1000000)/500000)-1)*10;
+		y = (((getRandomNumber() % 1000000)/500000)-1)*10;
+		//y = ((*randNum % 1000000)/500000.0)-1;
 		//x = 1;
 		//y = 2;
 		d = ((x*x) + (y*y));
 		//AcquireLock();
-		if (d <= 1.0) {
+		
+		if (d <= 10) {
 		  in+=1;
 		}
 		//ReleaseLock();
 	}
-	
-
+	AcquireLock();
+	printf("IN: %d\n", in);
+	ReleaseLock();
 	return in;
 }
 
-long long unsigned int results[CORES];
+int results[CORES];
 
-int main(void) {
+void g() {
 
 	int procNumber;
 	AcquireLock();
@@ -61,14 +73,15 @@ int main(void) {
 	ReleaseLock();
 	int size;
 	unsigned int n, i;
-	long long unsigned int in = 0;
-	double d, pi, x, y;
+	int in = 0;
+	int d, pi, x, y;
 
 
-	n = 100;
+	n = 1000000;
 
 	//srand (time(NULL));
-	*randNum = 100;
+//	*randNum = 100;
+	setSeed((int)time(NULL));
 	//in = monte_carlo_pi(n);
 	
 	for(i = 0; i < CORES; i++) {
@@ -79,22 +92,29 @@ int main(void) {
 	    ReleaseLock();
 	  }
 	}
-	/*
-
+	AcquireLock();
 	if (procNumber == 0) {
-	  printf("PRJOCCJCJ\n");
 	  while(done < CORES);
 	  for (i=0; i < CORES; i++) {
 	    in += results[i];
 	  }
-	  pi = 4*in/((double)n);
-	  printf("%lf\n",pi);
+	  in *= 1000;
+	  pi = 4*in/n;
+	  //AcquireLock();
+	  printf("Resposta in: %d\n",pi);
+	  //ReleaseLock();
+	} else {
+	  printf("SOU O CORE %d\n", procNumber);
 	}
-	AcquireLock();
-	printf("OI\n");
 	ReleaseLock();
 
+}
 
-	*/
+int main(void) {
+
+	g();	
+
+
+	
 	return 0;
 }
