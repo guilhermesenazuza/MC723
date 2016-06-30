@@ -5,7 +5,7 @@
 
 
 volatile int procCounter = 0;
-#define CORES 2
+#define CORES 4
 
 volatile int done=0;
 volatile int *lock = (volatile int *) ADDRESS;
