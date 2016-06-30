@@ -7,11 +7,24 @@
 - 139715 - Pedro Rodrigues Grijó
 
 ## Introdução
-Neste projeto, foi modelado um sistema com múltiplos cores e foram executados os programas [pi_seq.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-tlm2/pi_seq.c), [pi_par.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-4core/pi_par.c), [pi_seq_perifa.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-seq-newperif/pi_seq_perifa.c) e [pi_seq_newperifa.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-seq-newperif/pi_seq_newperifa.c). O programa original é [pi_seq.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-tlm2/pi_seq.c), todos os outros são modificações dele. As modificações foram feitas com o intuito de paralelizar a execução do programa original e acelerar o seu desempenho. Para isso, foi criado o módulo de hardware extra [ac_tlm_peripheral.cpp](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-seq-newperif/ac_tlm_peripheral.cpp).
+Neste projeto, foi modelado um sistema com múltiplos cores e foram executados os programas [pi seq](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-tlm2/pi_seq.c), [pi paralelo](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-4core/pi_par.c), [pi seq. periférico](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-seq-newperif/pi_seq_perifa.c) e [pi seq. novo perif.](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-seq-newperif/pi_seq_newperifa.c). O programa original é [pi_seq](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-tlm2/pi_seq.c), todos os outros são modificações dele. As modificações foram feitas com o intuito de paralelizar a execução do programa original e acelerar o seu desempenho. Para isso, foi criado o módulo de hardware extra [periférico acelerado](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-seq-newperif/ac_tlm_peripheral.cpp).
 
 ## Metodologia
 
-Inicialmente um [roteiro](https://github.com/pedrogrijo/MC723/blob/master/projeto3/ROTEIRO.md) foi criado para definir os passos para realização do projeto e o cronograma do mesmo. Porém, após dificuldades com o programa [poisson_openmp.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/poisson_openmp.c) [1], decidimos descartar o roteiro original e usar o calculador de pi [pi_seq.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-tlm2/pi_seq.c), desenvolvido pelo aluno João Guilherme Daros Fidélis na disciplina MC970 - Introdução à Programação Paralela.  
+Inicialmente um [roteiro](https://github.com/pedrogrijo/MC723/blob/master/projeto3/ROTEIRO.md) foi criado para definir os passos para realização do projeto e o cronograma do mesmo. Porém, após dificuldades com o programa [poisson_openmp](https://github.com/pedrogrijo/MC723/blob/master/projeto3/poisson_openmp.c) [1], decidimos descartar o roteiro original e usar o calculador de pi [pi_seq](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-tlm2/pi_seq.c), desenvolvido pelo aluno João Guilherme Daros Fidélis na disciplina MC970 - Introdução à Programação Paralela.  As particularidades desse programa e dos outros 3 criados a partir dele são:
+
+* [pi_seq.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-tlm2/pi_seq.c): Código original sequencial, sem uso do [periférico original](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-tlm2/ac_tlm_peripheral.cpp) para aceleração.
+* [pi_seq_perifa.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-seq-newperif/pi_seq_perifa.c): Modificação do programa anterior para usar o [periférico original](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-tlm2/ac_tlm_peripheral.cpp) para aceleração.
+* [pi_par.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-4core/pi_par.c)(2 e 4 cores): Versão paralelizada de [pi_seq.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-tlm2/pi_seq.c). Esta versão foi executada com 2 e 4 cores. Para isso, o programa [main.cpp](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-4core/main.cpp) foi modificado para instanciar 2 e 4 cores em cada caso. Foi rodado usando o [periférico original](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-tlm2/ac_tlm_peripheral.cpp)
+* [pi_seq_newperifa.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-seq-newperif/pi_seq_newperifa.c): Modificação de [pi_seq.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-tlm2/pi_seq.c) para usar o [periférico acelerado](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-seq-newperif/ac_tlm_peripheral.cpp)
+
+Para cada um dos 4 programas foram feitos 5 testes. Os parâmetros medidos em cada teste foram: 
+* **#instructions**: número de instruções executadas pelo simulador mips
+* **pi aproximation**: aproximação calculada para o valor de pi
+* **temp user**:  tempo de execução do programa. Foi usado user time, que é o tempo de CPU gasto em modo usuário.
+
+Após os 5 testes, a média de cada resultado foi calculada para comparação entre os programas e periféricos utilizados.
+  
 
 ## Análise e Resultados
 Executamos os testes e obtivemos os seguintes resultados.
