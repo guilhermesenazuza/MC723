@@ -16,23 +16,26 @@ Inicialmente um [roteiro](https://github.com/pedrogrijo/MC723/blob/master/projet
 ## Análise e Resultados
 Executamos os testes e obtivemos os seguintes resultados.
 <br/>
-|                 |:pi seq.:|:pi seq.  periférico:|:pi paralelo (2cores):|:pi paralelo (4cores):|:pi seq. novo perif.:| 
+
+|                 | pi seq.         | pi seq.  periférico | pi paralelo (2cores) | pi paralelo (4cores) | pi seq. novo perif. | 
 |-----------------|---------------------|----------------------|----------------------|---------------------|----------| 
-|:#instructions   | 415580929           | 406041536            | 39774757             | 39825072            | 17808886 | 
-|:pi aproximation | 3.1382              | 3.1328               | -                    | -                   | 3.5896   | 
-|:temp user       | 27.37               | 26.52                | 2.15                 | 2.52                | 1.73     | 
-|:#instructions   | 415568650           | 406041536            | 39774757             | 39825072            | 17808886 | 
-|:pi aproximation | 3.13164             | 3.1328               | -                    | -                   | 3.5896   | 
-|:temp user       | 27.12               | 26.45                | 2.12                 | 3.65                | 2.01     | 
-|:#instructions   | 415571997           | 406041536            | 39774757             | 39825072            | 17808886 | 
-|:pi aproximation | 3.1472              | 3.1328               | -                    | -                   | 3.5896   | 
-|:temp user       | 27.58               | 26.49                | 2.26                 | 3.64                | 1.2      | 
-|:#instructions   | 415526974           | 406041536            | 39774757             | 39825072            | 17808886 | 
-|:pi aproximation | 3.13224             | 3.1328               | -                    | -                   | 3.5896   | 
-|:temp user       | 27.24               | 26.85                | 3.06                 | 3.65                | 1.2      | 
-|:#instructions   | 415542553           | 406041536            | 39774757             | 39825072            | 17808886 | 
-|:pi aproximation | 3.13716             | 3.1328               | -                    | -                   | 3.5896   | 
-|:temp user       | 27.11               | 27.98                | 3.06                 | 3.42                | 1.26     | 
+| #instructions   | 415580929           | 406041536            | 39774757             | 39825072            | 17808886 | 
+| pi aproximation | 3.1382              | 3.1328               | -                    | -                   | 3.5896   | 
+| temp user       | 27.37               | 26.52                | 2.15                 | 2.52                | 1.73     | 
+| #instructions   | 415568650           | 406041536            | 39774757             | 39825072            | 17808886 | 
+| pi aproximation | 3.13164             | 3.1328               | -                    | -                   | 3.5896   | 
+| temp user       | 27.12               | 26.45                | 2.12                 | 3.65                | 2.01     | 
+| #instructions   | 415571997           | 406041536            | 39774757             | 39825072            | 17808886 | 
+| pi aproximation | 3.1472              | 3.1328               | -                    | -                   | 3.5896   | 
+| temp user       | 27.58               | 26.49                | 2.26                 | 3.64                | 1.2      | 
+| #instructions   | 415526974           | 406041536            | 39774757             | 39825072            | 17808886 | 
+| pi aproximation | 3.13224             | 3.1328               | -                    | -                   | 3.5896   | 
+| temp user       | 27.24               | 26.85                | 3.06                 | 3.65                | 1.2      | 
+| #instructions   | 415542553           | 406041536            | 39774757             | 39825072            | 17808886 | 
+| pi aproximation | 3.13716             | 3.1328               | -                    | -                   | 3.5896   | 
+| temp user       | 27.11               | 27.98                | 3.06                 | 3.42                | 1.26     | 
+
+
 <br/>
 Como  podemos observar na imagem abaixo, obtivemos uma grande diferença no número de instruções para os processadores com 2 e 4 núcleos
 <br/>
