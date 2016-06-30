@@ -14,6 +14,9 @@ Neste projeto, foi modelado um sistema com múltiplos cores e executado o progra
 Inicialmente um [roteiro](https://github.com/pedrogrijo/MC723/blob/master/projeto3/ROTEIRO.md) foi criado para definir os passos para realização do projeto e o cronograma do mesmo. Porém, após dificuldades com o programa [poisson_openmp.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/poisson_openmp.c) [1], decidimos descartar o roteiro original e usar o calculador de pi [pi_seq.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_seq.c), desenvolvido pelo aluno João Guilherme Daros Fidélis na disciplina MC970 - Introdução à Programação Paralela. Partindo desse programa foi criada a versão sequencial com o periférico [pi_seq_perifa.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_seq_perifa.c) e a versão paralelizada [pi_par.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_par.c). 
 
 ## Análise e Resultados
+![](/projeto3/images/avg.png "")
+![](/projeto3/images/time.png "")
+![](/projeto3/images/aprox.png "")
 
 ## Conclusão
 
