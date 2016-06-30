@@ -7,42 +7,15 @@
 - 139715 - Pedro Rodrigues Grijó
 
 ## Introdução
-Neste projeto, foi modelado um sistema com múltiplos cores e executado programa o [poisson.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/poisson.c). Este programa é uma modificação de [poisson_orig.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/poisson_orig.c). As modificações foram feitas com o intuito de paralelizar a execução do programa original. Além disto, o módulo de hardware extra [act_tlm_peripheral2.cpp](https://github.com/pedrogrijo/MC723/blob/master/projeto3/poisson.c) foi criado para acelerar o desempenho deste programa.
+Neste projeto, foi modelado um sistema com múltiplos cores e executado o programa [pi_par.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_par.c). Este programa é uma modificação de [pi_seq.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_seq.c). As modificações foram feitas com o intuito de paralelizar a execução do programa original. Além disto, o módulo de hardware extra [pi_seq_perifa.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_seq_perifa.c) foi criado para acelerar o desempenho deste programa.
 
 ## Metodologia
 
+Inicialmente um [roteiro](https://github.com/pedrogrijo/MC723/blob/master/projeto3/ROTEIRO.md) foi criado para definir os passos para realização do projeto e o cronograma do mesmo. Porém, após dificuldades com o programa [poisson_openmp.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/poisson_openmp.c) [1], decidimos descartar o roteiro original e usar o calculador de pi [pi_seq.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_seq.c), desenvolvido pelo aluno João Guilherme Daros Fidélis na disciplina MC970 - Introdução à Programação Paralela. Partindo desse programa foi criada a versão sequencial com o periférico [pi_seq_perifa.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_seq_perifa.c) e a versão paralelizada [pi_par.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_par.c). 
 
 ## Análise e Resultados
+
 ## Conclusão
+
 ## Referências
-
-------------------------
-## Software
-Utilizaremos o software poisson que pode ser obtido no seguinte site:
-https://people.sc.fsu.edu/~jburkardt/c_src/poisson_openmp/poisson_openmp.c
-
-## Otimização
-Para otimização escolhemos melhorar o desempenho da função de floating point, já que é muito utilizada no software que escolhemos.
-
-## Ganho de desempenho
-Para medirmos ganho de desempenho serão mensuradas:
-- tempo
-- ciclos
-- número de instruções
-
-## Experimentos
-Serão variados os parâmetros NX e NY da aplicação escolhida e executada em 1,2,4 *cores*.
-- Experimento 1: 1 Core, NX,NY = 30
-- Experimento 2: 2 Cores, NX,NY = 30
-- Experimento 3: 4 Cores, NX,NY = 30
-- Experimento 4: 1 Core, NX,NY = 161
-- Experimento 5: 2 Cores, NX,NY = 161
-- Experimento 6: 4 Cores, NX,NY = 161
-- Experimento 7: 1 Core, NX,NY = 260
-- Experimento 8: 2 Cores, NX,NY = 260
-- Experimento 9: 4 Cores, NX,NY = 260
-
-## Cronograma
-- Semana 1: Escolhas iniciais serão definidas.
-- Semana 2: Modificações no código para otimizar a função e mudança no código para paralelizarmos a aplicação no mips.
-- Semana 3: Fim das implementações, execução dos testes e análise dos resultados.
+1. https://people.sc.fsu.edu/~jburkardt/c_src/poisson_openmp/poisson_openmp.c
