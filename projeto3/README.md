@@ -7,13 +7,36 @@
 - 139715 - Pedro Rodrigues Grijó
 
 ## Introdução
-Neste projeto, foi modelado um sistema com múltiplos cores e foram executados os programas [pi_seq.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-tlm2/pi_seq.c), [pi_par.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-4core/pi_par.c), [pi_seq_perifa.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-seq-newperif/pi_seq_perifa.c) e [pi_seq_newperifa.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-seq-newperif/pi_seq_newperifa.c). O programa original é [pi_seq.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-tlm2/pi_seq.c), todos os outros são modificações dele. As modificações foram feitas com o intuito de paralelizar a execução do programa original e acelerar o seu desempenho. Para isso, foi criado o módulo de hardware extra [ac_tlm_peripheral.cpp](https://github.com/pedrogrijo/MC723/blob/master/projeto3/mips-seq-newperif/ac_tlm_peripheral.cpp).
+Neste projeto, foi modelado um sistema com múltiplos cores e executado o programa [pi_par.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_par.c). Este programa é uma modificação de [pi_seq.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_seq.c). As modificações foram feitas com o intuito de paralelizar a execução do programa original. Além disto, o módulo de hardware extra [pi_seq_perifa.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_seq_perifa.c) foi criado para acelerar o desempenho deste programa.
 
 ## Metodologia
 
-Inicialmente um [roteiro](https://github.com/pedrogrijo/MC723/blob/master/projeto3/ROTEIRO.md) foi criado para definir os passos para realização do projeto e o cronograma do mesmo. Porém, após dificuldades com o programa [poisson_openmp.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/poisson_openmp.c) [1], decidimos descartar o roteiro original e usar o calculador de pi [pi_seq.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_seq.c), desenvolvido pelo aluno João Guilherme Daros Fidélis na disciplina MC970 - Introdução à Programação Paralela. 
+Inicialmente um [roteiro](https://github.com/pedrogrijo/MC723/blob/master/projeto3/ROTEIRO.md) foi criado para definir os passos para realização do projeto e o cronograma do mesmo. Porém, após dificuldades com o programa [poisson_openmp.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/poisson_openmp.c) [1], decidimos descartar o roteiro original e usar o calculador de pi [pi_seq.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_seq.c), desenvolvido pelo aluno João Guilherme Daros Fidélis na disciplina MC970 - Introdução à Programação Paralela. Partindo desse programa foi criada a versão sequencial com o periférico [pi_seq_perifa.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_seq_perifa.c) e a versão paralelizada [pi_par.c](https://github.com/pedrogrijo/MC723/blob/master/projeto3/pi_par.c). 
 
 ## Análise e Resultados
+Executamos os testes e obtivemos os seguintes resultados.
+| pi seq.         | pi seq.  periférico | pi paralelo (2cores) | pi paralelo (4cores) | pi seq. novo perif. |          | 
+|-----------------|---------------------|----------------------|----------------------|---------------------|----------| 
+| #instructions   | 415580929           | 406041536            | 39774757             | 39825072            | 17808886 | 
+| pi aproximation | 3.1382              | 3.1328               | -                    | -                   | 3.5896   | 
+| temp user       | 27.37               | 26.52                | 2.15                 | 2.52                | 1.73     | 
+| #instructions   | 415568650           | 406041536            | 39774757             | 39825072            | 17808886 | 
+| pi aproximation | 3.13164             | 3.1328               | -                    | -                   | 3.5896   | 
+| temp user       | 27.12               | 26.45                | 2.12                 | 3.65                | 2.01     | 
+| #instructions   | 415571997           | 406041536            | 39774757             | 39825072            | 17808886 | 
+| pi aproximation | 3.1472              | 3.1328               | -                    | -                   | 3.5896   | 
+| temp user       | 27.58               | 26.49                | 2.26                 | 3.64                | 1.2      | 
+| #instructions   | 415526974           | 406041536            | 39774757             | 39825072            | 17808886 | 
+| pi aproximation | 3.13224             | 3.1328               | -                    | -                   | 3.5896   | 
+| temp user       | 27.24               | 26.85                | 3.06                 | 3.65                | 1.2      | 
+| #instructions   | 415542553           | 406041536            | 39774757             | 39825072            | 17808886 | 
+| pi aproximation | 3.13716             | 3.1328               | -                    | -                   | 3.5896   | 
+| temp user       | 27.11               | 27.98                | 3.06                 | 3.42                | 1.26     | 
+
+Como  podemos observar na imagem abaixo, obtivemos uma grande diferença no número de instruções para os processadores com 2 e 4 núcleos
+![](/projeto3/images/avg.png "")
+![](/projeto3/images/time.png "")
+![](/projeto3/images/aprox.png "")
 
 ## Conclusão
 
