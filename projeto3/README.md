@@ -25,7 +25,9 @@ Para cada um dos 4 programas foram feitos 5 testes. Os parâmetros medidos em ca
 
 ### Otimização
 Para a primeira otimização foi introduzido apenas um periférico que realizava a operação mais utilizada no corpo do código, no nosso caso a multiplicação de números longos.
+
 A segunda e terceira execução foi inserida a plataforma multicores, com 2 e 4 cores respectivamente e também alteramos os tipos das variáveis de *unsigned long long int*  para *int*  a fim de melhorar o desempenho do mips nas multiplicações de tipos longos.
+
 Por fim, a última otimização proposta foi a criação de um novo periférico que além de realizar as operações e as alterações de tipo também realiza-se grande parte do algoritmo de calculo de pi.
 
 Após os 5 testes, a média de cada resultado foi calculada para comparação entre os programas e periféricos utilizados.
@@ -60,7 +62,7 @@ Executamos os testes e obtivemos os seguintes resultados.
 | pi aproximation | 3.137288    | 3.1328              | -                    | -                    | 3.5896              | 
 | temp user       | 27.284      | 26.858              | 2.53                 | 3.376                | 1.48                | 
 
-Não conseguimos obter o valor da aproximação de pi para a execução de 2 e 4 cores devido a presença de um bug no simulador. A presença de operações de pontos flutuantes somados com vários núcleos podem ter estourado a pilha do simulador, devido a isso os valores para a aproximação nestes casos não foram obtidas. 
+Não conseguimos obter o valor da aproximação de pi para a execução de 2 e 4 cores devido a presença de um bug no simulador. A presença de operações de pontos flutuantes com vários núcleos pode ter estourado a pilha do simulador e impossibilitando a obtenção dos resultados. 
 
 Ao análisar o número de instruções obtivemos uma grande discrepância entre as duas primeiras simulações (pi seq. e pi seq. periférico) e as demais, como pode ser observado na imagem 1.
 
