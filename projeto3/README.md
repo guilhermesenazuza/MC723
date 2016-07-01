@@ -88,7 +88,7 @@ Por fim, notamos que ao movermos a parte principal da aplicação para um perif�
 <br/>
 ## Conclusão
 
-Com os experimentos executados pode-se afirmar que houve ganho significativo com relação ao programa original (sequencial e sem uso do periférico). Nota-se também que a utilização do periferico e a alteração do tipo das váriavéis acabou contribuindo muito para a otimização do programa no mips. Por fim, também pode ser indicado que o periférico acelerado obteve o melhor resultado dentre todos os testes, pois toda parte que consumia grande quantidade de processamento foi alocada para um periférico mais rápido para aquela função.
+Com os experimentos executados pode-se afirmar que houve ganho significativo com relação ao programa original (sequencial e sem uso do periférico). Nota-se também que a utilização do periferico e a alteração do tipo das váriavéis acabou contribuindo muito para a otimização do programa no mips. Por fim, também pode ser indicado que o periférico acelerado obteve o melhor resultado dentre todos os testes, pois toda parte que consumia grande quantidade de processamento foi alocada para um periférico mais rápido para aquela função. Segue abaixo os ganhos em relação a pi_seq.c
 
 
 | averages compared | pi seq. | pi seq.  periférico | pi paralelo (2cores) | pi paralelo (4cores) | pi seq. novo perif. | 
