@@ -26,7 +26,7 @@ Para cada um dos 4 programas foram feitos 5 testes. Os parâmetros medidos em ca
 ### Otimização
 Para a primeira otimização foi introduzido apenas um periférico que realizava a operação mais utilizada no corpo do código, no nosso caso a multiplicação de números longos.
 
-A segunda e terceira execução foi inserida a plataforma multicores, com 2 e 4 cores respectivamente e também alteramos os tipos das variáveis de *unsigned long long int*  para *int*  a fim de melhorar o desempenho do mips nas multiplicações de tipos longos.
+A segunda e terceira execução foi inserida a plataforma multicores, com 2 e 4 cores respectivamente e também alteramos os tipos das variáveis de *unsigned long long int*  para *int*  a fim de melhorar o desempenho do mips.
 
 Por fim, a última otimização proposta foi a criação de um novo periférico que além de realizar as operações e as alterações de tipo também realiza-se grande parte do algoritmo de calculo de pi.
 
