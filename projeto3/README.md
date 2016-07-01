@@ -62,7 +62,7 @@ Executamos os testes e obtivemos os seguintes resultados.
 | pi aproximation | 3.137288    | 3.1328              | -                    | -                    | 3.5896              | 
 | temp user       | 27.284      | 26.858              | 2.53                 | 3.376                | 1.48                | 
 
-Não conseguimos obter o valor da aproximação de pi para a execução de 2 e 4 cores devido a presença de um bug no simulador. A presença de operações de pontos flutuantes com vários núcleos pode ter estourado a pilha do simulador e impossibilitando a obtenção dos resultados. 
+Não conseguimos obter o valor da aproximação de pi para a execução de 2 e 4 cores devido a presença de um bug no simulador. A presença de operações de pontos flutuantes com vários núcleos causava e impedia o simulador de terminar. Logo, tivemos que transformar todos os números em inteiros o que tirou toda a precisão do nosso programa. O bug na pilha apontado pelo Professor impediu-nos de fazer a redução e chegar no valor correto no fim. No mais, ainda foi útil para avaliar o tempo gasto na computação.
 
 Ao análisar o número de instruções obtivemos uma grande discrepância entre as duas primeiras simulações (pi seq. e pi seq. periférico) e as demais, como pode ser observado na imagem 1.
 
