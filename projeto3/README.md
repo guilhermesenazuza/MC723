@@ -89,5 +89,13 @@ Por fim, notamos que ao movermos a parte principal da aplicação para um perif�
 ## Conclusão
 
 Com os experimentos executados pode-se afirmar que houve ganho significativo com relação ao programa original (sequencial e sem uso do periférico). Nota-se também que a utilização do periferico e a alteração do tipo das váriavéis acabou contribuindo muito para a otimização do programa no mips. Por fim, também pode ser indicado que o periférico acelerado obteve o melhor resultado dentre todos os testes, pois toda parte que consumia grande quantidade de processamento foi alocada para um periférico mais rápido para aquela função.
+
+
+| averages compared | pi seq. | pi seq.  periférico | pi paralelo (2cores) | pi paralelo (4cores) | pi seq. novo perif. | 
+|-------------------|---------|---------------------|----------------------|----------------------|---------------------| 
+| #instructions     | 1       | 1.023437712         | 10.44778779          | 10.43458806          | 23.33431864         | 
+| temp user         | 1       | 1.015861196         | 10.78418972          | 8.081753555          | 18.43513514         | 
+
+
 ## Referências
 1. https://people.sc.fsu.edu/~jburkardt/c_src/poisson_openmp/poisson_openmp.c
