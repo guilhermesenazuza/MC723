@@ -60,13 +60,27 @@ Executamos os testes e obtivemos os seguintes resultados.
 | pi aproximation | 3.137288    | 3.1328              | -                    | -                    | 3.5896              | 
 | temp user       | 27.284      | 26.858              | 2.53                 | 3.376                | 1.48                | 
 
-Não conseguimos obter o valor da aproximação de pi para a execução multicore devido a presença de um bug no simulador onde a presença do print que exibia a aproximação de pi atrapalhava a simulação, devido a isso os valores para a aproximação nestes casos não foram obtidas. 
-Ao análisar o número de instruções obtivemos uma grande discrepância das duas primeira simulações (pi seq. e pi seq. periférico) das demais,como pode ser observado na primeira imagem abaixo, isso se dá principalmente devido ao fato de termos alterarmos os tipos dos dados de *long long unsigned* para *unsigned int* nas simulações de pi paralelo(2 e 4 cores) e pi seq. novo perf. para otimizarmos esse tipo de operação. Como em um processador como  o mips fazer operações matemáticas com números longos em mips demanda muitas movimentações de registradores e o uso de vários registradores em alguns casos. Analisando os tempos de execução (segunda imagem abaixo) observamos um grande grande ganho de performace com as otimizações implementadas e apesar de perdermos precisão o valor obtido apresenta um valor satisfatório para uma aproximação de pi. Por fim, notamos que ao movermos a parte principal da aplicação para um periférico foi onde obtivemos a maior ganho de desempenho, o que faz sentido já que quando você utiliza um periférico especialmente desenvolvido e otimizado para aquela tarefa acarrete em ganho de desempenho considerável.
+Não conseguimos obter o valor da aproximação de pi para a execução de 2 e 4 cores devido a presença de um bug no simulador. A presença do print que exibia a aproximação de pi atrapalhava a simulação, e devido a isso os valores para a aproximação nestes casos não foram obtidas. 
 
+Ao análisar o número de instruções obtivemos uma grande discrepância entre as duas primeiras simulações (pi seq. e pi seq. periférico) e as demais, como pode ser observado na imagem 1.
+
+*imagem 1*
 <br/>
 ![](/projeto3/images/avg.png "")
 <br/>
+
+Isso se dá principalmente devido ao fato de termos alterado os tipos de dados de **long long unsigned** para **unsigned int** nas simulações de pi paralelo(2 e 4 cores) e pi seq. novo perf. para otimizarmos esse tipo de operação. Isso ocorre porque em um processador como o mips, fazer operações matemáticas com números longos demanda muitas movimentações de registradores e em alguns casos o uso de vários registradores.
+
+Analisando os tempos de execução (imagem 2), observamos um grande grande ganho de performace com as otimizações implementadas. Apesar de perdermos precisão, o valor obtido é satisfatório para uma aproximação de pi. 
+
+*imagem 2*
+<br/>
 ![](/projeto3/images/time.png "")
+</br>
+
+Por fim, notamos que ao movermos a parte principal da aplicação para um periférico  obtivemos um grande ganho de desempenho. Esse ganho é coerente, pois quando um periférico especialmente desenvolvido para uma certa tarefa é utilizado, o ganho é considerável.
+
+*imagem 3*
 </br>
 ![](/projeto3/images/aprox.png "")
 <br/>
